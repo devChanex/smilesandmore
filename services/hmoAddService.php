@@ -13,14 +13,11 @@ $benefit = urldecode($_POST['benefit']);
 $remarks = urldecode($_POST['remarks']);
 $verification = urldecode($_POST['verification']);
 $agent = urldecode($_POST['agent']);
-$approvalCode = urldecode($_POST['approvalCode']);
-
-$hmotype = urldecode($_POST['hmotype']);
 
 //echo'<script>alert("tesT");</script>';
 //INHERITANCE -- CREATING NEW INSTANCE OF A CLASS (INSTANTIATE)
 $service = new ServiceClass();
-$result = $service->process($name, $accountnumber, $birthdate, $company, $contact, $hmo, $validity, $benefit, $remarks, $verification, $agent, $hmotype, $approvalCode);
+$result = $service->process($name, $accountnumber, $birthdate, $company, $contact, $hmo, $validity, $benefit, $remarks, $verification, $agent);
 echo $result;
 //USE THIS AS YOUR BASIS
 class ServiceClass
@@ -39,12 +36,12 @@ class ServiceClass
         $stmt = $this->conn->prepare($sql);
         return $stmt;
     }
-    public function process($name, $accountnumber, $birthdate, $company, $contact, $hmo, $validity, $benefit, $remarks, $verification, $agent, $hmotype, $approvalCode)
+    public function process($name, $accountnumber, $birthdate, $company, $contact, $hmo, $validity, $benefit, $remarks, $verification, $agent)
     {
         //:a,:b parameter
         try {
 
-            $query = "Insert into hmo (accountnumber, hmo, name, dob, company, contact, status,validity,dentalbenefits,remarks,verificationStatus,agent,hmotype,approvalcode) values (:a,:b,:c,:d,:e,:f,'Active',:g,:h,:i,:j,:k,:l,:m)";
+            $query = "Insert into hmo (accountnumber, hmo, name, dob, company, contact, status,validity,dentalbenefits,remarks,verificationStatus,agent) values (:a,:b,:c,:d,:e,:f,'Active',:g,:h,:i,:j,:k)";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':a', $accountnumber);
             $stmt->bindParam(':b', $hmo);
@@ -57,8 +54,6 @@ class ServiceClass
             $stmt->bindParam(':i', $remarks);
             $stmt->bindParam(':j', $verification);
             $stmt->bindParam(':k', $agent);
-            $stmt->bindParam(':l', $hmotype);
-            $stmt->bindParam(':m', $approvalCode);
             $stmt->execute();
             return "success";
         } catch (Exception $e) {

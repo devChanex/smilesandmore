@@ -34,7 +34,7 @@ class ServiceClass
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '
                 <tr>
-                <td>' . date("Y/m/d", strtotime($row["date"])) . '</td>
+                <td>' . $row["date"] . '</td>
          
                 <td>' . $row["time"] . '</td>
                 <td>' . $row["dentist"] . '</td>

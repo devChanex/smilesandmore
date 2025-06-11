@@ -50,50 +50,41 @@ class ServiceClass
                     $totalPayment += $row["amount"];
                     echo '
                 <tr>
-                    <td>' . date("Y/m/d", strtotime($row["date"])) . '</td>
+                    <td>
+                    ' . $row["date"] . '
+                    </td>
                     <td>
                     ' . number_format($row["amount"], 2) . '
                     </td>
                     <td>
                     ' . $row["paymenttype"] . '
                     </td>
-
-                    <td align="center">
-                     <a href="#" title="View Medical History"  class="btn btn-danger btn-sm btn-circle" onclick="deletePayment(\'' . $row["id"] . '\', \'' . $row["amount"] . '\')"><i class="fas fa-times"></i></a>
-                    </td>
                 </tr>
                 
                     ';
                 }
-            } else {
-
-                echo '
-                <tr>
-                <td align="center" colspan="4">No Payment Yet</td>
-                </tr>
-                ';
             }
 
             echo '
-         
+            <br>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="2">
                     Total Payment:
                     </td>
                     <td align="right">
                     ' . number_format($totalPayment, 2) . '
                     </td>
-                  
+                   
                 </tr>
 
                 <tr>
-                    <td colspan="3">
-                    Remaining Balance:
+                    <td colspan="2">
+                    Total Balamce:
                     </td>
                     <td align="right">
                     ' . number_format($soaTotal - $totalPayment, 2) . '
                     </td>
-                     
+                   
                 </tr>
             
             ';

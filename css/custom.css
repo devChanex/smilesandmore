@@ -103,33 +103,4 @@
     background: #fff;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    touch-action: none;
-    /* Prevents default scrolling/panning on touch */
-}
-
-
-.clickable {
-    cursor: pointer;
-}
-
-.underline-on-hover {
-    text-decoration: none;
-    color: inherit;
-    font-weight: normal;
-    /* optional: prevent color change */
-}
-
-.underline-on-hover:hover {
-    text-decoration: underline !important;
-    font-weight: bold;
-    color: black
-}
-
-#loading {
-    transition: opacity 0.3s ease;
-}
-
-.bg-purple {
-    background-color: #622c9e !important;
-    color: white !important;
 }

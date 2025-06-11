@@ -28,53 +28,11 @@ class ServiceClass
 
 
         $dateToday = date("Y-m-d");
-        if (!empty($fromdate) && !empty($todate)) {
-            // If both dates are provided
-            $query = "SELECT tsoa.soaid, cp.clientid,tsoa.hmoaccredited, cp.lname, cp.fname, cp.mdname, tsoa.dentist, tsub.treatment, tsub.price, tsoa.date 
-                      FROM clientprofile cp 
-                      INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid 
-                      INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid 
-                      WHERE (tsoa.date BETWEEN :a AND :b)";
 
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':a', $fromdate);
-            $stmt->bindParam(':b', $todate);
-
-        } elseif (empty($fromdate) && !empty($todate)) {
-            // If only todate is provided
-            $query = "SELECT tsoa.soaid, cp.clientid,tsoa.hmoaccredited, cp.lname, cp.fname, cp.mdname, tsoa.dentist, tsub.treatment, tsub.price, tsoa.date 
-                      FROM clientprofile cp 
-                      INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid 
-                      INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid 
-                      WHERE (tsoa.date <= :b)";
-
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':b', $todate);
-
-        } elseif (!empty($fromdate) && empty($todate)) {
-            // If only todate is provided
-            $query = "SELECT tsoa.soaid, cp.clientid,tsoa.hmoaccredited, cp.lname, cp.fname, cp.mdname, tsoa.dentist, tsub.treatment, tsub.price, tsoa.date 
-                      FROM clientprofile cp 
-                      INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid 
-                      INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid 
-                      WHERE (tsoa.date >= :b)";
-
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':b', $fromdate);
-
-
-
-        } else {
-            // No filtering if both dates are empty
-            $query = "SELECT tsoa.soaid, cp.clientid,tsoa.hmoaccredited, cp.lname, cp.fname, cp.mdname, tsoa.dentist, tsub.treatment, tsub.price, tsoa.date 
-                      FROM clientprofile cp 
-                      INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid 
-                      INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid";
-
-            $stmt = $this->conn->prepare($query);
-        }
-
-
+        $query = "SELECT tsoa.soaid, cp.clientid, cp.lname, cp.fname, cp.mdname, tsoa.dentist, tsub.treatment, tsub.price, tsoa.date FROM clientprofile cp INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid WHERE (tsoa.date BETWEEN :a AND :b) ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':a', $fromdate);
+        $stmt->bindParam(':b', $todate);
         $stmt->execute();
         $total = 0;
         if ($stmt->rowCount() > 0) {
@@ -82,36 +40,24 @@ class ServiceClass
                 $total += $row["price"];
                 $fullname = $row["lname"] . ', ' . $row["fname"] . ' ' . $row["mdname"];
                 echo '
-                <tr style="color: black;">
+                <tr>
                 <td>' . $row["soaid"] . '</td>
 
-                <td>' . $fullname . '</td>';
-                $hmo = $row["hmoaccredited"];
-                $hmoDisplay = '';
-
-                if (!empty($hmo)) {
-                    $parts = explode('|', $hmo);
-                    $hmoDisplay = trim($parts[0]);
-                }
-
-                echo '  <td>' . $hmoDisplay . '</td>';
-
-
-                echo '
+                <td>' . $fullname . '</td>
                 <td>' . $row["dentist"] . '</td>
                 <td>' . $row["treatment"] . '</td>
                 <td style="text-align:right;">' . number_format($row["price"], 2) . '</td>
-               <td>' . date("Y/m/d", strtotime($row["date"])) . '</td>
+                <td>' . $row["date"] . '</td>
             </tr>';
             }
         }
         echo '
 <tr>
               
-                <td colspan="5">Total </td>
+                <td colspan="4">Total </td>
                 
                 <td style="text-align:right;"><strong>' . number_format($total, 2) . '</strong></td>
-                <td></td>      
+                <td>-</td>      
             </tr>
 ';
     }

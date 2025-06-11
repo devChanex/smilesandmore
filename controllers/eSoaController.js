@@ -19,98 +19,20 @@ function add() {
     var treatment = e.value;
     var remarks = document.getElementById("remarks").value;
     var details = document.getElementById("details").value;
-    var diagnosis = document.getElementById("diagnosis").value;
-    var price = document.getElementById("price").value || 0;
-    var hmo = "";
-    var isHmo = document.getElementById("hmoCovered").checked;
-
-    if (isHmo) {
-        hmo = document.getElementById("hmo").value;
+    var price = document.getElementById("price").value;
+    if (price == null || price == "") {
+        price = 0;
     }
 
-    var detailsForDisplay = details.replace(/\n/g, "<br>");
-    var remarksForDisplay = remarks.replace(/\n/g, "<br>");
-    var diagnosisForDisplay = diagnosis.replace(/\n/g, "<br>");
-
-    document.getElementById("treatmentList").innerHTML += `
-        <tr>
-            <td>${treatment}</td>
-            <td>${diagnosisForDisplay}</td>
-            <td>${detailsForDisplay}</td>
-            <td>${remarksForDisplay}</td>
-            <td>${price}</td>
-            <td>${hmo}</td>
-            <td>
-                <button class="btn btn-success btn-circle btn-sm"
-                    onclick="editTreatment(this)"
-                    data-treatment="${encodeURIComponent(treatment)}"
-                    data-diagnosis="${encodeURIComponent(diagnosis)}"
-                    data-details="${encodeURIComponent(details)}"
-                    data-remarks="${encodeURIComponent(remarks)}"
-                    data-hmo="${encodeURIComponent(hmo)}"
-                    data-price="${encodeURIComponent(price)}"
-                    title="Edit treatment">
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button class="btn btn-danger btn-circle btn-sm"
-                    onclick="deleteTreatment(this)" title="Delete treatment">
-                    <i class="fas fa-times"></i>
-                </button>
-            </td>
-        </tr>
-    `;
-
-    computeTotal();
-
-    // Reset form
-    document.getElementById("remarks").value = "";
-    document.getElementById("details").value = "";
-    document.getElementById("diagnosis").value = "";
-    document.getElementById("price").value = 0;
-}
-
-
-function editTreatment(button) {
-    var treatment = decodeURIComponent(button.getAttribute("data-treatment"));
-    var diagnosis = decodeURIComponent(button.getAttribute("data-diagnosis"));
-    var details = decodeURIComponent(button.getAttribute("data-details"));
-    var remarks = decodeURIComponent(button.getAttribute("data-remarks"));
-    var price = decodeURIComponent(button.getAttribute("data-price"));
-    var hmo = decodeURIComponent(button.getAttribute("data-hmo"));
-
-    if (hmo != "") {
-        document.getElementById("hmoCovered").checked = true;
-
+    if (remarks != "" && details != "") {
+        document.getElementById("treatmentList").innerHTML += "<tr><td>" + treatment + "</td><td>" + details + "</td><td>" + remarks + "</td><td>" + price + "</td><td><button class=\"btn btn-danger btn-circle btn-sm\" onclick=\"deleteTreatment(this)\" title=\"Delete treatment\"><i class=\"fas fa-times\"></i></button></td></tr>";
+        computeTotal();
     } else {
-        document.getElementById("hmoCovered").checked = false;
-
+        toastError("All Field is required.")
     }
-
-    document.getElementById("treatment").value = treatment;
-    document.getElementById("remarks").value = remarks;
-    document.getElementById("details").value = details;
-    document.getElementById("diagnosis").value = diagnosis;
-    document.getElementById("price").value = price;
-
-    $(button).closest('tr').remove();
-
-    var table = document.getElementById("treatmentList");
-    var rowCount = table.rows.length;
-    if (rowCount == 1) {
-        table.deleteRow(0);
-    }
-
-    recomputeTotal();
 }
 function deleteTreatment(o) {
-
     $(o).closest('tr').remove();
-
-    var table = document.getElementById("treatmentList");
-    var rowCount = table.rows.length;
-    if (rowCount == 1) {
-        table.deleteRow(0);
-    }
     recomputeTotal();
 }
 
@@ -126,14 +48,14 @@ function computeTotal() {
     for (let i in table.rows) {
         let row = table.rows[i]
         for (let j in row.cells) {
-            if (j == 4) {
+            if (j == 3) {
                 let col = row.cells[j]
                 total += parseFloat(col.innerHTML);
             }
 
         }
     }
-    document.getElementById("treatmentList").innerHTML += "<td colspan=\"4\">Total</td><td>" + total + "</td><td></td></tr>";
+    document.getElementById("treatmentList").innerHTML += "<td colspan=\"3\">Total</td><td>" + total + "</td><td></td></tr>";
 
 
 }
@@ -143,21 +65,20 @@ function recomputeTotal() {
     var rowCount = table.rows.length;
     if (rowCount > 1) {
         table.deleteRow(rowCount - 1);
-
     }
 
     var total = 0;
     for (let i in table.rows) {
         let row = table.rows[i]
         for (let j in row.cells) {
-            if (j == 4) {
+            if (j == 3) {
                 let col = row.cells[j]
                 total += parseFloat(col.innerHTML);
             }
 
         }
     }
-    document.getElementById("treatmentList").innerHTML += "<td colspan=\"4\">Total</td><td>" + total + "</td><td></td></tr>";
+    document.getElementById("treatmentList").innerHTML += "<td colspan=\"3\">Total</td><td>" + total + "</td><td></td></tr>";
 
 
 }
@@ -181,9 +102,7 @@ function submit() {
 
     }
 
-
-    var e = document.getElementById("dentist");
-    var dentist = e.value;
+    var dentist = document.getElementById("dentist").value;
     var dates = document.getElementById("date").value;
     var time = document.getElementById("time").value;
     var clientid = document.getElementById("clientid").value;
@@ -243,14 +162,12 @@ function submitSubSoa(soaid) {
         let row = table.rows[i]
         if (i < rowCount - 1) {
             var treatment = row.cells[0].innerHTML;
-            var diagnosis = row.cells[1].innerHTML;
-            var details = row.cells[2].innerHTML;
-            var remarks = row.cells[3].innerHTML;
-            var price = parseFloat(row.cells[4].innerHTML);
-            var hmo = row.cells[5].innerHTML;
+            var details = row.cells[1].innerHTML;
+            var remarks = row.cells[2].innerHTML;
+            var price = parseFloat(row.cells[3].innerHTML);
 
             if (treatment) {
-                submitSubSoatoService(treatment, diagnosis, details, remarks, price, clientid, soaid, hmo);
+                submitSubSoatoService(treatment, details, remarks, price, clientid, soaid);
             }
 
 
@@ -263,18 +180,16 @@ function submitSubSoa(soaid) {
 
 }
 
-function submitSubSoatoService(treatment, diagnosis, details, remarks, price, clientid, soaid, hmo) {
+function submitSubSoatoService(treatment, details, remarks, price, clientid, soaid) {
 
 
     var fd = new FormData();
     fd.append('treatment', treatment);
-    fd.append('diagnosis', diagnosis);
     fd.append('details', details);
     fd.append('remarks', remarks);
     fd.append('price', price);
     fd.append('clientid', clientid);
     fd.append('soaid', soaid);
-    fd.append('hmo', hmo);
     $.ajax({
         url: "services/esoaSubmitSubService.php",
         data: fd,

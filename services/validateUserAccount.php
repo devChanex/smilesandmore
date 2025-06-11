@@ -8,16 +8,9 @@ $password = urldecode($_POST['password']);
 $service = new ServiceClass();
 $result = $service->loginAccount($username, $password);
 if ($result) {
-	header('Content-Type: application/json');
-	echo json_encode([
-		'result' => 'success',
-		'email' => $_SESSION['email']
-	]);
+	echo 'success';
 } else {
-	header('Content-Type: application/json');
-	echo json_encode([
-		'result' => 'failed'
-	]);
+	echo 'failed';
 }
 
 //USE THIS AS YOUR BASIS
@@ -92,15 +85,12 @@ class ServiceClass
 
 			}
 
-
 			return true;
 		} else {
 			return false;
 		}
 	}
 	//UNTIL THIS CODE
-
-
 
 }
 //UNTIL HERE COPY

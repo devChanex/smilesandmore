@@ -8,7 +8,7 @@ echo '
 <li class="nav-item">
                 <a class="nav-link" href="basecode.php">
                 
-                 <strong>S&M</strong></a>
+                 <strong>SSDC</strong></a>
             </li>
 
           
@@ -48,12 +48,17 @@ echo '
                 <li class="nav-item">
                 <a class="nav-link" href="clientProfileList.php" >
                     <i class="fas fa-address-card"></i>
-                    <span>Patient\'s Profile</span>
+                    <span>Client Profile</span>
                     </a>
                
             </li>
 
-   
+    <li class="nav-item">
+    <a class="nav-link" href="consentList.php" >
+        <i class="fas fa-file"></i>
+        <span>Consent List</span>
+    </a>
+    </li>
         <li class="nav-item">
     <a class="nav-link" href="hmoList.php" >
         <i class="fas fa-heart"></i>
@@ -83,8 +88,8 @@ echo '
             </li>
             ';
 
-// if ($_SESSION["username"] == $superuser) {
-echo '
+if ($_SESSION["username"] == $superuser) {
+    echo '
 <li class="nav-item">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#report" aria-expanded="false"
         aria-controls="config">
@@ -93,15 +98,13 @@ echo '
     </a>
     <div id="report" class="collapse" aria-labelledby="report" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-  
-
-<a class="collapse-item" href="statementofaccounts.php">Statement of Account</a>
-<a class="collapse-item" href="clientTreatmentReport.php">Patient Treatments</a>
-<a class="collapse-item" href="incomedaterange.php">Income Statement</a>
-<a class="collapse-item" href="dailytransactionsummary.php">Daily Transaction Summary</a>
-          
- 
-
+            <a class="collapse-item" href="soadaterange.php">SOA Summary per Date</a>
+            <a class="collapse-item" href="soaperclient.php">SOA Summary per Client</a>
+             <a class="collapse-item" href="soaperdentist.php">SOA Summary per Dentist</a>
+            <a class="collapse-item" href="clienttreatmentrecordperdate.php">CT Records per Date</a>
+            <a class="collapse-item" href="clienttreatmentrecordperclient.php">CT Records per Client</a>
+             <a class="collapse-item" href="clienttreatmentrecordperdentist.php">CT Records per Dentist</a>
+            <a class="collapse-item" href="clienttreatmentrecordpertreatment.php">CT Records per Treatment</a>
         </div>
     </div>
 </li>
@@ -109,25 +112,6 @@ echo '
         <!-- End of Sidebar -->
 
 ';
-//  <a class="collapse-item" href="soadaterange.php">SOA Summary per Date</a>
-//     <a class="collapse-item" href="soaperclient.php">SOA Summary per Client</a>
-//      <a class="collapse-item" href="soaperdentist.php">SOA Summary per Dentist</a>
+}
 
-
-//      <a class="collapse-item" href="clienttreatmentrecordperdentist.php">CT Records per Dentist</a>
-//     <a class="collapse-item" href="clienttreatmentrecordperclient.php">CT Records per Client</a>
-// <a class="collapse-item" href="clienttreatmentrecordperdentist.php">CT Records per Dentist</a>
-//   <a class="collapse-item" href="soadaterange.php">SOA Summary per Date</a>
-//     <a class="collapse-item" href="soaperclient.php">SOA Summary per Client</a>
-//      <a class="collapse-item" href="soaperdentist.php">SOA Summary per Dentist</a>
-//     <a class="collapse-item" href="clienttreatmentrecordperdate.php">CT Records per Date</a>
-//     <a class="collapse-item" href="clienttreatmentrecordperclient.php">CT Records per Client</a>
-// <a class="collapse-item" href="clienttreatmentrecordpertreatment.php">CT Records per Treatment</a>
-// }
-// <li class="nav-item">
-// <a class="nav-link" href="consentList.php" >
-//     <i class="fas fa-file"></i>
-//     <span>Consent List</span>
-// </a>
-// </li>
 echo '</ul>';
