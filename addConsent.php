@@ -50,11 +50,20 @@
                         </div>
                         <div class="card-body" id="bodyResult">
                             <input type="hidden" value="<?php echo $_GET['clientid']; ?>" id="clientId">
-                            <div class="row m-3">
-                                <div class="col-lg-12 d-flex justify-content-center">
-                                    <img src="img/logo.png" alt="Logo">
+                            <div class="row">
+                                <div class="col-lg-12 d-flex align-items-center">
+                                    <img src="img/white_logo_final.jpg" alt="Logo"
+                                        style="max-height:100px; margin-right: 20px;">
+                                    <div>
+                                        <h4 class="mb-1"><strong>Dr. Nikki Sarmiento Dental Care Clinic</strong>
+                                        </h4>
+                                        <p class="mb-0">Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias
+                                            Angeles
+                                            City Pampanga PH 2009</p>
+                                    </div>
                                 </div>
                             </div>
+
                             <hr>
                             <div class="row">
                                 <div class="col-lg-6 d-flex align-items-center">

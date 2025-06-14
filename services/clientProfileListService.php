@@ -73,9 +73,7 @@ class ServiceClass
      
                
                 <td align="center">
-                 <a href="updateClient.php?civilStatus=' . $row["civilstatus"] . '&company=' . $row["company"] . '&cardNumber=' . $row["cardnumber"] . '&hmo=' . $row["hmo"] . '&religion=' . $row["religion"] . '&clientid=' . $row["clientid"] . '&lname=' . $row["lname"] . '&fname=' . $row["fname"] . '&mname=' . $row["mdname"] . '&nick=' . $row["nickname"] . '&age=' . $age . '&sex=' . $row["sex"] . '&occupation=' . $row["occupation"] . '
-                &birthDate=' . $row["birthDate"] . '&mobileNumber=' . $row["mobileNumber"] . '&homeAddress=' . $row["homeAddress"] . '
-                &guardianName=' . $row["guardianName"] . '&gOccupation=' . $row["gOccupation"] . '&refferedBy=' . $row["refferedBy"] . '
+                 <a href="updateClient.php?civilStatus=' . $row["civilstatus"] . '&company=' . $row["company"] . '&cardNumber=' . $row["cardnumber"] . '&hmo=' . $row["hmo"] . '&religion=' . $row["religion"] . '&clientid=' . $row["clientid"] . '&lname=' . $row["lname"] . '&fname=' . $row["fname"] . '&mname=' . $row["mdname"] . '&nick=' . $row["nickname"] . '&age=' . $age . '&sex=' . $row["sex"] . '&occupation=' . $row["occupation"] . '&birthDate=' . $row["birthDate"] . '&mobileNumber=' . $row["mobileNumber"] . '&homeAddress=' . $row["homeAddress"] . '&guardianName=' . $row["guardianName"] . '&gOccupation=' . $row["gOccupation"] . '&refferedBy=' . $row["refferedBy"] . '&emailAddress=' . $row["emailAddress"] . '
                 " class="btn btn-warning btn-circle" title="Update Client Profile"><i class="fas fa-edit"></i></a>';
 
                 //medhistory checker
@@ -97,17 +95,9 @@ class ServiceClass
                 if ($stmt2->rowCount() > 0) {
 
                     while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<a href="viewConsent.php?dentist=' . $row2["dentist"] . '&date=' . $row2["date"] . '&consentid=' . $row2["id"] . '&civilStatus=' . $row2["civilstatus"] . '&company=' . $row2["company"] . '&cardNumber=' . $row2["cardnumber"] . '&hmo=' . $row2["hmo"] . '&religion=' . $row2["religion"] . '&clientid=' . $row["clientid"] . '&lname=' . $row["lname"] . '&fname=' . $row2["fname"] . '&mname=' . $row2["mdname"] . '&nick=' . $row2["nickname"] . '&age=' . $row2["age"] . '&sex=' . $row["sex"] . '&occupation=' . $row["occupation"] . '
-                        &birthDate=' . $row2["birthDate"] . '&mobileNumber=' . $row2["mobileNumber"] . '&homeAddress=' . $row2["homeAddress"] . '
-                        &guardianName=' . $row2["guardianName"] . '&gOccupation=' . $row2["gOccupation"] . '&refferedBy=' . $row2["refferedBy"] . '
-                        " class="btn btn-primary btn-circle" title="View Client Consent"><i class="fas fa-file"></i></a>
+                        echo '<a href="viewConsent.php?dentist=' . $row2["dentist"] . '&date=' . $row2["date"] . '&consentid=' . $row2["id"] . '&civilStatus=' . $row2["civilstatus"] . '&company=' . $row2["company"] . '&cardNumber=' . $row2["cardnumber"] . '&hmo=' . $row2["hmo"] . '&religion=' . $row2["religion"] . '&clientid=' . $row["clientid"] . '&lname=' . $row["lname"] . '&fname=' . $row2["fname"] . '&mname=' . $row2["mdname"] . '&nick=' . $row2["nickname"] . '&age=' . $row2["age"] . '&sex=' . $row["sex"] . '&occupation=' . $row["occupation"] . '&birthDate=' . $row2["birthDate"] . '&mobileNumber=' . $row2["mobileNumber"] . '&homeAddress=' . $row2["homeAddress"] . '&guardianName=' . $row2["guardianName"] . '&gOccupation=' . $row2["gOccupation"] . '&refferedBy=' . $row2["refferedBy"] . '" class="btn btn-primary btn-circle" title="View Client Consent"><i class="fas fa-file"></i></a>
                         ';
                     }
-
-                } else {
-                    echo ' 
-                     <a href="addConsent.php?civilStatus=' . $row["civilstatus"] . '&company=' . $row["company"] . '&cardNumber=' . $row["cardnumber"] . '&hmo=' . $row["hmo"] . '&religion=' . $row["religion"] . '&clientid=' . $row["clientid"] . '&lname=' . $row["lname"] . '&fname=' . $row["fname"] . '&mname=' . $row["mdname"] . '&nick=' . $row["nickname"] . '&age=' . $age . '&sex=' . $row["sex"] . '&occupation=' . $row["occupation"] . '&birthDate=' . $row["birthDate"] . '&mobileNumber=' . $row["mobileNumber"] . '&homeAddress=' . $row["homeAddress"] . '&guardianName=' . $row["guardianName"] . '&gOccupation=' . $row["gOccupation"] . '&refferedBy=' . $row["refferedBy"] . '" class="btn btn-success btn-circle" title="Add Client Consent"><i class="fas fa-file"></i></a>
-                 ';
 
                 }
 

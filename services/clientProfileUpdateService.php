@@ -29,12 +29,13 @@ $religion = urldecode($_POST['religion']);
 $civilStatus = urldecode($_POST['civilStatus']);
 $hmo = urldecode($_POST['hmo']);
 $cardNumber = urldecode($_POST['cardNumber']);
+$emailAddress = urldecode($_POST['emailAddress']);
 
 $company = urldecode($_POST['company']);
 //echo'<script>alert("tesT");</script>';
 //INHERITANCE -- CREATING NEW INSTANCE OF A CLASS (INSTANTIATE)
 $service = new ServiceClass();
-$result = $service->updatePatientProfile($clientId, $lastName, $firstName, $middleName, $nickName, $age, $gender, $birthday, $homeAddress, $occupation, $contactNumber, $guardianName, $guardianOccupation, $referredBy, $religion, $civilStatus, $imageData, $hmo, $cardNumber, $company);
+$result = $service->updatePatientProfile($clientId, $lastName, $firstName, $middleName, $nickName, $age, $gender, $birthday, $homeAddress, $occupation, $contactNumber, $guardianName, $guardianOccupation, $referredBy, $religion, $civilStatus, $imageData, $hmo, $cardNumber, $company, $emailAddress);
 echo $result;
 //USE THIS AS YOUR BASIS
 class ServiceClass
@@ -53,12 +54,12 @@ class ServiceClass
 		$stmt = $this->conn->prepare($sql);
 		return $stmt;
 	}
-	public function updatePatientProfile($clientId, $lastName, $firstName, $middleName, $nickName, $age, $gender, $birthday, $homeAddress, $occupation, $contactNumber, $guardianName, $guardianOccupation, $referredBy, $religion, $civilStatus, $imageData, $hmo, $cardNumber, $company)
+	public function updatePatientProfile($clientId, $lastName, $firstName, $middleName, $nickName, $age, $gender, $birthday, $homeAddress, $occupation, $contactNumber, $guardianName, $guardianOccupation, $referredBy, $religion, $civilStatus, $imageData, $hmo, $cardNumber, $company, $emailAddress)
 	{
 		//:a,:b parameter
 		try {
 
-			$query = "update clientprofile set religion=:o,civilstatus=:p,photo=:q,hmo=:r,cardnumber=:s,company=:t,lname=:a,fname=:b,mdname=:c,nickname=:d,age=:e,sex=:f,occupation=:g,birthDate=:h,mobileNumber=:i,homeAddress=:j,guardianName=:k,gOccupation=:l,refferedBy=:m where clientid=:n";
+			$query = "update clientprofile set religion=:o,civilstatus=:p,photo=:q,hmo=:r,cardnumber=:s,company=:t,lname=:a,fname=:b,mdname=:c,nickname=:d,age=:e,sex=:f,occupation=:g,birthDate=:h,mobileNumber=:i,homeAddress=:j,guardianName=:k,gOccupation=:l,refferedBy=:m,emailAddress=:u where clientid=:n";
 			//$query = "Insert intoclientprofile(lname,fname,mdname,nickname,age,sex,occupation,mobileNumber,homeAddress,guardianName,gOccupation,refferedBy) values (:a,:b,:c,:d,:e,:f,:g,:i,:j,:k,:l,:m,:o)";
 			$stmt = $this->conn->prepare($query);
 			$stmt->bindParam(':a', $lastName);
@@ -81,6 +82,7 @@ class ServiceClass
 			$stmt->bindParam(':r', $hmo);
 			$stmt->bindParam(':s', $cardNumber);
 			$stmt->bindParam(':t', $company);
+			$stmt->bindParam(':u', $emailAddress);
 			$stmt->execute();
 			return "success";
 		} catch (Exception $e) {
