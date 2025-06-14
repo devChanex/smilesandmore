@@ -1092,7 +1092,7 @@
 
 
 
-            <script src="controllers/clientRegistrationController-v2.js"></script>
+            <script src="controllers/clientRegistrationController-v3.js"></script>
 
 
 

@@ -199,22 +199,22 @@ function validateHealthForm() {
 
 
 
-    // 10. Pregnant
-    const pregnant = getRadioValue("pregnant");
-    if (!pregnant) {
-        return focusAndToast(document.getElementsByName("pregnant")[0], "Please answer if you are currently pregnant.");
-    }
+    // // 10. Pregnant
+    // const pregnant = getRadioValue("pregnant");
+    // if (!pregnant) {
+    //     return focusAndToast(document.getElementsByName("pregnant")[0], "Please answer if you are currently pregnant.");
+    // }
 
-    // 10. nursing
-    const nursing = getRadioValue("nursing");
-    if (!nursing) {
-        return focusAndToast(document.getElementsByName("nursing")[0], "Please answer if you are currently pregnant.");
-    }
-    // 10. nursing
-    const birthControl = getRadioValue("birthControl");
-    if (!birthControl) {
-        return focusAndToast(document.getElementsByName("birthControl")[0], "Please answer if you are currently pregnant.");
-    }
+    // // 10. nursing
+    // const nursing = getRadioValue("nursing");
+    // if (!nursing) {
+    //     return focusAndToast(document.getElementsByName("nursing")[0], "Please answer if you are currently pregnant.");
+    // }
+    // // 10. nursing
+    // const birthControl = getRadioValue("birthControl");
+    // if (!birthControl) {
+    //     return focusAndToast(document.getElementsByName("birthControl")[0], "Please answer if you are currently pregnant.");
+    // }
 
     // All validations passed
     var medform = getMedicalFormValues(); // You can replace or extend this with AJAX submission
