@@ -57,9 +57,7 @@ function addPatientPersonalInfo() {
     else if (birthday == null) {
         msg = "Birthday is required";
     }
-    else if (occupation == "") {
-        msg = "Occupation is required";
-    }
+
     else if (homeAddress == "") {
         msg = "Home Address is required";
     }

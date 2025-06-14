@@ -546,7 +546,7 @@
 
                                             <!-- Allergy Options -->
                                             <div class="col-lg-12 mb-3" id="allergyOptions" style="display: block;">
-                                                - If yes, please select to any of the following:
+
                                                 <div class="row">
 
                                                     <div class="col-md-4">
@@ -1094,7 +1094,7 @@
 
 
 
-            <script src="controllers/clientRegistrationController-v5.js"></script>
+            <script src="controllers/clientRegistrationController-v6.js"></script>
 
 
 
