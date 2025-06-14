@@ -30,7 +30,7 @@ class ServiceClass
     {
         //:a,:b parameter
         try {
-            $query = "select * from medhistoryV2 where clientId=:clientid";
+            $query = "select * from medhistoryv2 where clientId=:clientid";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':clientid', $clientId);
             $stmt->execute();
