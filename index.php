@@ -524,7 +524,8 @@
                                         <div class="row">
                                             <!-- Question Label -->
                                             <div class="col-lg-6 mb-3">
-                                                <label class="form-label mb-0">8. Are you allergic?</label>
+                                                <label class="form-label mb-0">8. Are you allergic to any of the
+                                                    following:</label>
                                             </div>
 
                                             <!-- Yes/No Radio Buttons -->
@@ -544,7 +545,7 @@
                                             </div>
 
                                             <!-- Allergy Options -->
-                                            <div class="col-lg-12 mb-3" id="allergyOptions" style="display: none;">
+                                            <div class="col-lg-12 mb-3" id="allergyOptions" style="display: block;">
                                                 - If yes, please select to any of the following:
                                                 <div class="row">
 
@@ -1001,15 +1002,16 @@
                                         <label for="dentist">Dentist's Name</label>
 
 
-                                        <select name="dentist" id="dentistName" class="form-control"
+                                        <input list="dentists" name="dentist" id="dentistName" class="form-control"
                                             onchange="setDentistSignature();">
+                                        <datalist id="dentists">
                                             <?php
                                             include_once("bars/properties.php");
                                             foreach ($dentist as $d) {
-                                                echo '<option value="' . htmlspecialchars($d) . '">' . htmlspecialchars($d) . '</option>';
+                                                echo '<option value="' . htmlspecialchars($d) . '">';
                                             }
                                             ?>
-                                        </select>
+                                        </datalist>
                                         <label>Dentist Signature</label>
                                         <div class="border rounded p-3 signature-box text-center"
                                             style="height: 80px; cursor: pointer;" id="dentist-signature-box" onclick="openSignatureModal(function(sigData) {
@@ -1092,7 +1094,7 @@
 
 
 
-            <script src="controllers/clientRegistrationController-v4.js"></script>
+            <script src="controllers/clientRegistrationController-v5.js"></script>
 
 
 

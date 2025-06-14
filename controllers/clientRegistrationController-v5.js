@@ -25,8 +25,6 @@ function addPatientPersonalInfo() {
     var religion = document.getElementById("religion").value;
     const base64Image = document.getElementById('capturedPhoto').value;
 
-
-
     var birthday = document.getElementById("birthday").value;
     var occupation = document.getElementById("occupation").value;
     var homeAddress = document.getElementById("homeAddress").value;
@@ -93,7 +91,7 @@ function addPatientPersonalInfo() {
 }
 
 function validateHealthForm() {
-    switchToTab1("tab3-tab");
+
     let msg = "";
     let firstInvalidField = null;
 
