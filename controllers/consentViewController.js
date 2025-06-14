@@ -40,7 +40,7 @@ function loadMedHistory() {
         contentType: false,
         type: 'POST',
         success: function (result) {
-            alert(result);
+
 
             document.getElementById("medHistory").innerHTML = result;
 
