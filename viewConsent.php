@@ -263,7 +263,7 @@
                                     <div class="form-group col-md-6">
                                         Patient's/Guardian's Name:
                                         <?php
-                                        if ($GET["age"] < 18) {
+                                        if ($_GET["age"] < 18) {
                                             echo $_GET["guardianName"];
                                         } else {
                                             echo $_GET["fname"] . ' ' . $_GET["mname"] . ' ' . $_GET["lname"];
