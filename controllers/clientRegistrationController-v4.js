@@ -217,8 +217,7 @@ function validateHealthForm() {
     // }
 
     // All validations passed
-    var medform = getMedicalFormValues(); // You can replace or extend this with AJAX submission
-    console.log("Medical Form Values:", medform); // For debugging purposes
+
     switchToTab1("tab3-tab");
 
     // submitMedicalHistoryAjax(); // Call the AJAX function to submit the form data
