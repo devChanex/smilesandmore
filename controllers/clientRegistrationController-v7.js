@@ -437,7 +437,7 @@ function getMedicalFormValues() {
         birthControl: document.querySelector('input[name="birthControl"]:checked')?.value || null,
 
         // Collect q1 - q27 in an array
-        medicalHistory: Array.from({ length: 36 }, (_, i) => {
+        medicalHistory: Array.from({ length: 37 }, (_, i) => {
             const el = document.getElementById("q" + (i + 1));
             return el ? (el.type === "checkbox" ? el.checked : el.value) : null;
         }),

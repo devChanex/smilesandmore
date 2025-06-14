@@ -1094,7 +1094,7 @@
 
 
 
-            <script src="controllers/clientRegistrationController-v6.js"></script>
+            <script src="controllers/clientRegistrationController-v7.js"></script>
 
 
 
