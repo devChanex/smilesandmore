@@ -5,6 +5,13 @@ function showToast(toastType, message) {
     toastElement.toast({ delay: 3000 }).toast("show");
 }
 
+function showToastTime(toastType, message, time) {
+
+    let toastElement = $("#" + toastType);
+    toastElement.find(".toast-body").html(message);
+    toastElement.toast({ delay: time * 1000 }).toast("show");
+}
+
 function toastRedirect(toastType, message, redirect) {
     showToast(toastType, message);
     setTimeout(function () {
