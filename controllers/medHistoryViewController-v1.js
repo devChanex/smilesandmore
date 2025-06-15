@@ -14,7 +14,7 @@ function loadMedHistory(clientId) {
         type: 'POST',
         success: function (result) {
 
-            alert(result);
+
             document.getElementById("bodyResult").innerHTML = result;
 
         }
