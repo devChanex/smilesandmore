@@ -769,8 +769,10 @@ class ServiceClass
                                             
                                             <input type="text" id="otherCondition" name="otherCondition"
                                                     class="form-control mt-2" placeholder="Specify other condition"
-                                                    '
-                        . (isset($row['medicalHistoryOther']) && !empty($row['medicalHistoryOther']) ? 'value="' . htmlspecialchars($row['medicalHistoryOther']) . '"' : '') . '>
+
+                                                    value="'
+                        . (($row['medicalHistoryOther'] === 'null' || empty($row['medicalHistoryOther'])) ? '' : htmlspecialchars($row['medicalHistoryOther'])) .
+                        '">
                                             </div>
                                         </div>
 
