@@ -772,7 +772,14 @@ class ServiceClass
 
                                                     value="'
                         . (($row['medicalHistoryOther'] === 'null' || empty($row['medicalHistoryOther'])) ? '' : htmlspecialchars($row['medicalHistoryOther'])) .
-                        '">
+                        '"
+                        
+                        ';
+                    if (!isset($medicalFlags[36]) || $medicalFlags[36] !== 'true') {
+                        echo 'disabled';
+                    }
+                    echo '
+                        >
                                             </div>
                                         </div>
 
