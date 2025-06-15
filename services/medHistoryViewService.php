@@ -31,7 +31,7 @@ class ServiceClass
         try {
             $query = "select * from medhistoryV2 where clientId=:clientid";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':clientid', $clientId);
+            $stmt->bindParam(':clientid', $clientId, PDO::PARAM_INT);
             $stmt->execute();
             if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
