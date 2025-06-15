@@ -26,7 +26,7 @@ $message = "
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .email-header {
-      background-color:rgb(64, 74, 131);
+      background-color: #622c9e;
       color: white;
       padding: 10px 20px;
       border-top-left-radius: 8px;
