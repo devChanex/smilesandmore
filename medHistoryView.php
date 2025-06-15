@@ -47,7 +47,7 @@
                                 <?php echo ucwords($_GET['clientname']); ?>
                             </h6>
                         </div>
-                        <input type="text" value="<?php echo $_GET['clientid']; ?>" id="clientId">
+                        <input type="hidden" value="<?php echo $_GET['clientid']; ?>" id="clientId">
                         <div class="card-body" id="bodyResult" style="padding-right:20%;padding-left:20%">
 
 
