@@ -44,16 +44,25 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <div class="col-lg-12 d-flex align-items-center">
-                        <img src="img/white_logo_final.jpg" alt="Logo" style="max-height:100px; margin-right: 20px;">
-                        <div>
-                            <h4 class="mb-1"><strong>Dr. Nikki Sarmiento Dental Care Clinic</strong>
-                            </h4>
-                            <p class="mb-0">Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias
-                                Angeles
-                                City Pampanga PH 2009</p>
+                    <div class="col-lg-12 d-flex align-items-center justify-content-between">
+                        <!-- Left Side: Logo and Clinic Info -->
+                        <div class="d-flex align-items-center">
+                            <img src="img/white_logo_final.jpg" alt="Logo"
+                                style="max-height:100px; margin-right: 20px;">
+                            <div>
+                                <h4 class="mb-1"><strong>Dr. Nikki Sarmiento Dental Care Clinic</strong></h4>
+                                <p class="mb-0">Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias Angeles City
+                                    Pampanga PH 2009</p>
+                            </div>
                         </div>
+
+                        <!-- Right Side: Back Button -->
+                        <a href="waiver.php" class="btn btn-warning btn-icon-split">
+                            <span class="icon text-white-50"><i class="fas fa-fw fa-sign"></i></span>
+                            <span class="text">Ortho Waiver</span>
+                        </a>
                     </div>
+
 
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs" id="myTabs" role="tablist" style="display:none;">
@@ -73,6 +82,7 @@
 
                     <!-- Tab Content -->
                     <div class="tab-content mt-4" id="myTabsContent">
+
                         <!-- Tab 1 -->
                         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
                             <div class="card shadow mb-12">
