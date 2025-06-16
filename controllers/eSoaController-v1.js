@@ -165,10 +165,29 @@ function recomputeTotal() {
 
 function submit() {
     var table = document.getElementById("treatmentList");
+
     var rowCount = table.rows.length;
     var total = 0;
+    var consentRequired = false;
     for (let i in table.rows) {
         let row = table.rows[i]
+        let treatmentName = "";
+        // Make sure the row and its first cell exist
+        try {
+            treatmentName = row.cells[0].innerText.trim().toLowerCase();
+        } catch (error) {
+
+        }
+
+
+        // Compare against ortho treatment list (case-insensitive)
+        if (treatmentName.includes("orthodontics")) {
+            consentRequired = true;
+        }
+
+
+
+
         if (i == rowCount - 1) {
             for (let j in row.cells) {
                 if (j == 1) {
@@ -194,7 +213,35 @@ function submit() {
         toastError("All Field is required.");
 
     } else {
-        submitform(dentist, dates, time, clientid, total, hmo);
+        if (consentRequired) {
+            var consentExist = false;
+            var fd = new FormData();
+            fd.append('clientId', clientid);
+            $.ajax({
+                url: "services/esoaSubmitSubService.php",
+                data: fd,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (result) {
+                    consentExist = result;
+                }
+            });
+
+            if (consentExist) {
+                submitform(dentist, dates, time, clientid, total, hmo);
+
+            } else {
+                toastError("You need to submit waiver form for Orthodontic Treatment first before submitting E-SOA.");
+            }
+
+
+        } else {
+            submitform(dentist, dates, time, clientid, total, hmo);
+        }
+
+
+
     }
 
 
