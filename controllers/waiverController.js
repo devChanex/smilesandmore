@@ -60,6 +60,15 @@ function submitConsentform() {
     var dentistName = document.getElementById("dentistName").value;
     var clientId = document.getElementById("patientId").value;
 
+    if (dateSigned == "" || patientSignature == "" || dentistName == "" || patientName == "" || clientId == "") {
+        toastError("Please fill in all fields.");
+        return;
+    } else if (dentistName != "Dr. Nikki Sarmiento" && dentistSignature == "") {
+        toastError("Please provide a dentist signature.");
+        return;
+    }
+
+
     var fd = new FormData();
     fd.append('dateSigned', dateSigned);
     fd.append('dentistSignature', dentistSignature);

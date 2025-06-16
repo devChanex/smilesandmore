@@ -55,7 +55,7 @@ class ServiceClass
 
             $stmt->execute();
             if ($stmt->rowCount() > 0) {
-                echo "Client already has a signed waiver";
+                echo "Patient already has a signed waiver";
 
             } else {
 
