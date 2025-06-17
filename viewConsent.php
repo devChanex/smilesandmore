@@ -48,87 +48,92 @@
                         <div class="card-header <?php echo $cards; ?>">
                             View Patient Consent
 
-                            <!-- <button id="divPrinter" class="btn btn-success btn-sm btn-circle float-right"
+                            <button id="divPrinter" class="btn btn-success btn-sm btn-circle float-right"
                                 onclick="printDiv('bodyResult')" title="Print E-SOA"><i
-                                    class="fas fa-print"></i></button> -->
+                                    class="fas fa-print"></i></button>
                         </div>
-                        <div class="card-body" id="bodyResult">
+                        <div class="card-body" id="bodyResult" style="margin:top:0px;">
                             <input type="hidden" value="<?php echo $_GET['consentid']; ?>" id="consentId">
                             <input type="hidden" value="<?php echo $_GET['clientid']; ?>" id="clientId">
 
-                            <div class="col-lg-12 d-flex align-items-center">
+                            <div style="display: flex; align-items: center; margin-left: 30px; margin-top:0px;">
                                 <img src="img/white_logo_final.jpg" alt="Logo"
-                                    style="max-height:100px; margin-right: 20px;">
+                                    style="max-height: 100px; margin-right: 20px;">
                                 <div>
-                                    <h4 class="mb-1"><strong>Dr. Nikki Sarmiento Dental Care Clinic</strong>
-                                    </h4>
-                                    <p class="mb-0">Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias
-                                        Angeles
-                                        City Pampanga PH 2009</p>
+                                    <h4 style="margin-bottom: 5px; font-weight: bold;">Dr. Nikki Sarmiento Dental Care
+                                        Clinic</h4>
+                                    <p style="margin: 0;">
+                                        Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias<br>
+                                        Angeles City Pampanga PH 2009<br>
+                                        0927-605-8418 / 0960-437-5938
+                                    </p>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-2">Name: </strong>
+                            <hr style="margin: 10 30px;">
+                            <div style="display: flex; flex-wrap: wrap; margin: 0 30px;">
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Name:</strong>
                                     <?php echo trim($_GET["lname"]) . ', ' . trim($_GET['fname']) . ' ' . trim($_GET['mname']); ?>
                                 </div>
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Address: </strong>
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Address:</strong>
                                     <?php echo trim($_GET["homeAddress"]); ?>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Birthdate: </strong>
+
+                            <div style="display: flex; flex-wrap: wrap; margin: 0 30px;">
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Birthdate:</strong>
                                     <?php echo trim($_GET["birthDate"]); ?>
                                 </div>
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Age: </strong>
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Age:</strong>
                                     <?php
-
-                                    $dob = new DateTime($_GET["birthDate"]); // assuming dob is something like '1990-04-15'
+                                    $dob = new DateTime($_GET["birthDate"]);
                                     $today = new DateTime();
                                     $age = $today->diff($dob)->y;
                                     echo $age;
-
-
                                     ?>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Gender: </strong>
+                            <div style="display: flex; flex-wrap: wrap; margin: 0 30px;">
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Gender:</strong>
                                     <?php echo trim($_GET["sex"]); ?>
                                 </div>
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Occupation: </strong>
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Occupation:</strong>
                                     <?php echo trim($_GET["occupation"]); ?>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Civil Status: </strong>
+                            <div style="display: flex; flex-wrap: wrap; margin: 0 30px;">
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Civil Status:</strong>
                                     <?php echo trim($_GET["civilStatus"]); ?>
                                 </div>
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Religion: </strong>
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Religion:</strong>
                                     <?php echo trim($_GET["religion"]); ?>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Contact Number: </strong>
+
+                            <div style="display: flex; flex-wrap: wrap; margin: 0 30px;">
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Contact Number:</strong>
                                     <?php echo trim($_GET["mobileNumber"]); ?>
                                 </div>
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <strong class="mr-3">Referred By: </strong>
+                                <div style="width: 50%; display: flex; align-items: center;">
+                                    <strong style="margin-right: 10px;">Referred By:</strong>
                                     <?php echo trim($_GET["refferedBy"]); ?>
                                 </div>
                             </div>
-                            <hr>
+
+                            <hr style="margin: 10 30px;">
+
+
+
                             <div class="row">
 
                                 <div class="col-lg-12" id="medHistory">
@@ -139,13 +144,22 @@
 
                             <br>
                             <hr>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                             <!-- Page Heading -->
-                            <h1 class="h3 mb-4  text-center">Informed Consent</h1>
+                            <div style="text-align:center;">
+                                <h1 class="h3">Informed Consent</h1>
 
+                            </div>
                             <!-- Consent Card -->
 
 
-                            <div class="text-justify" style="margin:50px;">
+                            <div style="margin-left:30px;margin-right:30px;text-align:justify;">
 
                                 <p><strong>TREATMENT TO BE DONE:</strong> I understand and consent to have any treatment
                                     done by the dentist after the procedure, the risks & benefits & cost have been fully
@@ -258,70 +272,75 @@
                             </div>
 
                             <!-- Signature Area -->
-                            <form class="mt-4">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        Patient's/Guardian's Name:
-                                        <?php
-                                        if ($_GET["age"] < 18) {
-                                            echo $_GET["guardianName"];
-                                        } else {
-                                            echo $_GET["fname"] . ' ' . $_GET["mname"] . ' ' . $_GET["lname"];
-                                        }
-                                        ?>
-                                        <div class="row">
-                                            <div class="col-lg-6"><label>Patient's/Guardian's Signature</label></div>
-                                            <div class="col-lg-6"><label>Date Signed:
-                                                    <?php echo $_GET["date"]; ?></label>
-                                            </div>
+                            <form style="margin: 10px 30px 0 30px;">
+                                <div style="display: flex; justify-content: space-between; gap: 20px;">
+                                    <div style="flex: 1;">
+                                        <div style="margin-bottom: 10px;">
+                                            <strong>Patient's/Guardian's Name:</strong>
+                                            <?php
+                                            if ($_GET["age"] < 18) {
+                                                echo htmlspecialchars($_GET["guardianName"]);
+                                            } else {
+                                                echo htmlspecialchars($_GET["fname"] . ' ' . $_GET["mname"] . ' ' . $_GET["lname"]);
+                                            }
+                                            ?>
                                         </div>
-                                        <div class="border rounded p-3 signature-box"
-                                            style="height: 80px; cursor: pointer;" id="patient-signature-box">
+
+                                        <div
+                                            style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                            <div><label><strong>Patient's/Guardian's Signature</strong></label></div>
+                                            <div><label><strong>Date Signed:</strong>
+                                                    <?php echo htmlspecialchars($_GET["date"]); ?></label></div>
+                                        </div>
+
+                                        <div class="signature-box"
+                                            style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; height: 80px; cursor: pointer;">
                                             <img src="" alt="signature"
                                                 style="width: 100%; height: 100%; object-fit: contain;"
                                                 id="patientSignature">
                                         </div>
-
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        Dentist Name : <?php echo $_GET["dentist"]; ?>
-                                        <br>
 
-                                        <label>Dentist Signature</label>
-                                        <div class="border rounded p-3 signature-box"
-                                            style="height: 80px; cursor: pointer;" id="dentist-signature-boxs">
+                                    <div style="flex: 1;">
+                                        <br>
+                                        <div style="margin-bottom: 10px;">
+                                            <strong>Dentist Name:</strong>
+                                            <?php echo htmlspecialchars($_GET["dentist"]); ?>
+                                        </div>
+
+                                        <label><strong>Dentist Signature</strong></label>
+                                        <div class="signature-box"
+                                            style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; height: 80px; cursor: pointer;">
                                             <img src="img/e-sign.png" alt="signature"
                                                 style="width: 100%; height: 100%; object-fit: contain;"
                                                 id="dentistSignatures">
                                         </div>
                                     </div>
-
                                 </div>
-
-
-
                             </form>
 
 
 
 
 
-                            <footer class="sticky-footer">
-                                <div class="container my-auto">
-                                    <div class="copyright text-center my-auto">
 
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-icon-split"
-                                            onclick="window.location.href='consentList.php'">
-                                            <span class="icon text-white-50"><i class="fas fa-fw fa-times"></i></span>
-                                            <span class="text">Back</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </footer>
+
 
 
                             <!-- END OF YOUR ADDITIONAL CODE SNIPPET -->
                         </div>
+                        <footer class="sticky-footer">
+                            <div class="container my-auto">
+                                <div class="copyright text-center my-auto">
+
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-icon-split"
+                                        onclick="window.location.href='consentList.php'">
+                                        <span class="icon text-white-50"><i class="fas fa-fw fa-times"></i></span>
+                                        <span class="text">Back</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </footer>
                     </div>
 
                 </div>
