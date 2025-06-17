@@ -41,9 +41,9 @@ class ServiceClass
                 <div class="col-lg-6" style="text-align:right;">Bringing you, your best smile!</div>
             </div>
             <div class="row">
-                <div class="col-lg-12">2/F Mondo Bambini Commercial Strip Bldg.,
-                                    Brgy. Zapote, Binan City, Laguna</div>
-                <div class="col-lg-12">Contact us: 0919-009-3099</div>
+                <div class="col-lg-12">Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias Angeles
+                                    City Pampanga PH 2009</div>
+                <div class="col-lg-12">Contact us: 0927-605-8418 / 0960-437-5938</div>
                 <hr>
                 <div class="col-lg-12" style="text-align:center;"><strong>Electronic Statement of Account - ESOA</strong></div>
             </div>
