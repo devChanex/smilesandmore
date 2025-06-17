@@ -84,8 +84,8 @@
                                 <div style=" text-align:left;">
                                     <h2 style="margin:0; font-weight:bold; font-size: 1.5rem;">Smiles & More
                                     </h2>
-                                    <div style="font-size:14px;">2/F Mondo Bambini Commercial Strip Bldg., Brgy. Zapote,
-                                        Binan City, Laguna</div>
+                                    <div style="font-size:14px;">Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias
+                                        Angeles City Pampanga PH 2009</div>
                                 </div>
                                 <hr>
                                 <div style="text-align:center;">
