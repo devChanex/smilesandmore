@@ -270,7 +270,7 @@
 
 
 
-            <script src="controllers/waiverController.js"></script>
+            <script src="controllers/waiverController-v1.js"></script>
 
 
 
