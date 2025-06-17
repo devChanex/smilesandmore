@@ -95,6 +95,10 @@ class ServiceClass
             }
             $stmt0->bindParam(':x', $dentist);
         }
+        $gcash = 0;
+        $cash = 0;
+        $creditcard = 0;
+        $bankTransfer = 0;
 
 
         $stmt0->execute();
@@ -231,6 +235,7 @@ class ServiceClass
 
                 ';
                         //PAYMENT
+
                         $tsubid = $row["tsubid"];
                         $query3 = "select * from treatmentsubpayment where tsubid=:a order by paymentdate asc";
                         $stmt3 = $this->conn->prepare($query3);
@@ -254,6 +259,18 @@ class ServiceClass
                                     if ($paymentrow > 0) {
                                         echo '<br>';
                                     }
+
+
+                                    if ($row4["paymenttype"] == 'GCash') {
+                                        $gcash += $row4["amount"];
+                                    } else if ($row4["paymenttype"] == 'Credit Card') {
+                                        $creditcard += $row4["amount"];
+                                    } else if ($row4["paymenttype"] == "Bank Transfer") {
+                                        $bankTransfer += $row4["amount"];
+                                    } else {
+                                        $cash += $row4["amount"];
+                                    }
+
 
 
                                     $totalPayments = $totalPayments + $row4["amount"];
@@ -352,8 +369,26 @@ class ServiceClass
         <span><strong>Grand Total:</strong></span>
         <span>₱' . number_format($grandTotal, 2) . '</span>
     </div>
-    
+        <strong>Mode of Payment:</strong>
+  
+ <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span><strong>Cash:</strong></span>
+        <span>₱' . number_format($cash, 2) . '</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span><strong>GCash:</strong></span>
+        <span>₱' . number_format($gcash, 2) . '</span>
+    </div>
+       <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span><strong>Credit Card:</strong></span>
+        <span>₱' . number_format($creditcard, 2) . '</span>
+    </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span><strong>Bank Transfer:</strong></span>
+        <span>₱' . number_format($bankTransfer, 2) . '</span>
+    </div>
 
+   <hr>
     <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
         <span><strong>Total Payments:</strong></span>
         <span>₱' . number_format($grandAccumulatedPayments, 2) . '</span>
