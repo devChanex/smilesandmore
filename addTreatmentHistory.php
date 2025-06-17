@@ -230,7 +230,7 @@
             <script src="controllers/sessionController.js"></script>
             <script src="controllers/eSoaController-v1.js"></script>
             <script src="controllers/divPrinterController-v1.js"></script>
-            <script src="js/custom-v1.js"></script>
+            <script src="js/custom-v2.js"></script>
 </body>
 
 </html>

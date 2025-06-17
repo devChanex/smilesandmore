@@ -61,6 +61,8 @@ echo '
     </a>
    
     </li>
+
+
         <li class="nav-item">
                 <a class="nav-link" href="soaList.php" >
                     <i class="fas fa-credit-card"></i>
@@ -81,7 +83,16 @@ echo '
                     </div>
                 </div>
             </li>
+
+               <li class="nav-item">
+    <a class="nav-link" href="expensesList.php" >
+        <i class="fas fa-shopping-cart"></i>
+        <span>Expenses</span>
+    </a>
+   
+    </li>
             ';
+
 
 // if ($_SESSION["username"] == $superuser) {
 echo '
@@ -99,6 +110,7 @@ echo '
 <a class="collapse-item" href="clientTreatmentReport.php">Patient Treatments</a>
 <a class="collapse-item" href="incomedaterange.php">Income Statement</a>
 <a class="collapse-item" href="dailytransactionsummary.php">Daily Transaction Summary</a>
+<a class="collapse-item" href="monthlyexpensesummary.php">Monthly Expense Summary</a>
           
  
 

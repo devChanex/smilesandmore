@@ -317,7 +317,7 @@
             <script src="controllers/sessionController.js"></script>
             <script src="controllers/consentAddController.js"></script>
             <script src="js/signature.js"></script>
-            <script src="js/custom-v1.js"></script>
+            <script src="js/custom-v2.js"></script>
 </body>
 
 </html>

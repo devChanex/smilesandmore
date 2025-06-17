@@ -155,7 +155,7 @@
             <script src="controllers/logOutConroller.js"></script>
             <script src="controllers/sessionController.js"></script>
             <script src="controllers/hmoAddController.js"></script>
-            <script src="js/custom-v1.js"></script>
+            <script src="js/custom-v2.js"></script>
 </body>
 
 </html>

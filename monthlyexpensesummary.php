@@ -47,26 +47,42 @@
                         <div class="card-header py-3 <?php echo $cards; ?>">
 
                             <div class="row float-right" style-"float: right;">
-                                <label for="lastName">Dentist</label>
+                                Month :
+                                <select id="month" name="group" onchange="getclientdata();">
 
+                                    <option value="1">JAN</option>
+                                    <option value="2">FEB</option>
+                                    <option value="3">MAR</option>
+                                    <option value="4">APR</option>
+                                    <option value="5">MAY</option>
+                                    <option value="6">JUN</option>
+                                    <option value="7">JUL</option>
+                                    <option value="8">AUG</option>
+                                    <option value="9">SEP</option>
+                                    <option value="10">OCT</option>
+                                    <option value="11">NOV</option>
+                                    <option value="12">DEC</option>
 
-                                <select name="dentist" id="dentist" onchange="getclientdata();">
-                                    <option value="All">All</option>
-                                    <?php
-                                    foreach ($dentist as $d) {
-                                        echo '<option value="' . htmlspecialchars($d) . '">' . htmlspecialchars($d) . '</option>';
-                                    }
-                                    ?>
                                 </select>
-                                Group By :
-                                <select id="group" name="group" onchange="getclientdata();">
+                                Year :
+                                <select id="year" name="group" onchange="getclientdata();">
 
-                                    <option value="Dentist">Dentist</option>
-                                    <option value="Treatment">Treatment</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2025">2026</option>
+                                    <option value="2025">2027</option>
+                                    <option value="2025">2028</option>
+                                    <option value="2025">2029</option>
+                                    <option value="2025">2030</option>
+                                    <option value="2025">2031</option>
+                                    <option value="2025">2032</option>
+                                    <option value="2025">2033</option>
+                                    <option value="2025">2034</option>
+                                    <option value="2025">2035</option>
+
+
 
                                 </select>
-                                Date From : <input type="date" id="from" onchange="getclientdata();">
-                                Date To : <input type="date" id="to" onchange="getclientdata();">
+
 
                                 <input type="button" class="btn btn-primary" onclick="printDiv('daterange')"
                                     value="Print">
@@ -89,36 +105,30 @@
                                 </div>
                                 <hr>
                                 <div style="text-align:center;">
-                                    <h2 style="margin:0; font-weight:bold;">PATIENT TREATMENT SUMMARY</h2>
+                                    <h2 style="margin:0; font-weight:bold;">MONTHLY EXPENSE SUMMARY</h2>
                                     <h5 id="h3id" style="margin:0;"></h5>
                                 </div>
                                 <div style="width:180px;"></div> <!-- Spacer for symmetry, adjust width as needed -->
                             </div>
-                            <!-- USE THIS SPACE FOR YOUR ADDITIONAL CODE SNIPPET -->
-                            <div>
-                                <div id="loading" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+
+                            <div id="loading" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
             background:rgba(255,255,255,0.7); backdrop-filter: blur(3px);
             z-index:9999;">
 
-                                    <div class="d-flex flex-column align-items-center justify-content-center"
-                                        style="height: 100%;">
-                                        <div class="spinner-grow text-primary mb-3" role="status"
-                                            style="width: 3rem; height: 3rem;">
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-                                        <div class="h5 font-weight-bold text-primary">Loading, please wait...</div>
+                                <div class="d-flex flex-column align-items-center justify-content-center"
+                                    style="height: 100%;">
+                                    <div class="spinner-grow text-primary mb-3" role="status"
+                                        style="width: 3rem; height: 3rem;">
+                                        <span class="sr-only">Loading...</span>
                                     </div>
+                                    <div class="h5 font-weight-bold text-primary">Loading, please wait...</div>
                                 </div>
-
-
-
-                                <div class="card-body" id="resultResponse">
-
-                                </div>
-
-
+                            </div>
+                            <!-- USE THIS SPACE FOR YOUR ADDITIONAL CODE SNIPPET -->
+                            <div class="card-body" id="responseBody">
 
                             </div>
+
 
 
 
@@ -152,11 +162,12 @@
 
             <!-- Custom scripts for all pages-->
             <script src="js/sb-admin-2.min.js"></script>
-            <script src="js/custom-v2.js"></script>
             <script src="controllers/logOutConroller.js"></script>
             <script src="controllers/sessionController.js"></script>
-            <script src="controllers/clienttreatmentrecordperdatecontroller-v3.js"></script>
+            <script src="js/custom-v2.js"></script>
+            <script src="controllers/monthlyexpensesummaryController.js"></script>
             <script src="controllers/divPrinterController-v1.js"></script>
+
 
 
 

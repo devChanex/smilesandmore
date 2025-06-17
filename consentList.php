@@ -118,7 +118,7 @@
             <!-- Page level custom scripts -->
             <script src="js/demo/datatables-demo.js"></script>
 
-            <script src="js/custom-v1.js"></script>
+            <script src="js/custom-v2.js"></script>
 
             <!-- Custom scripts for all pages-->
             <script src="js/sb-admin-2.min.js"></script>
