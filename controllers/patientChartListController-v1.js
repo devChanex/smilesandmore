@@ -1,5 +1,6 @@
 getclientdata();
 getPatientCards();
+getclientdentalChart();
 function getclientdata() {
     var id = document.getElementById("clientid").value;
 
@@ -22,6 +23,26 @@ function getclientdata() {
     });
     document.getElementById("content-table").style.zoom = "60%";
 }
+
+function getclientdentalChart() {
+    var id = document.getElementById("clientid").value;
+    var fd = new FormData();
+    fd.append('id', id);
+    $.ajax({
+        url: "services/patientDentalChartService.php",
+        data: fd,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function (result) {
+            document.getElementById("dental-chart-region").innerHTML = result;
+
+        }
+
+    });
+    document.getElementById("content-table").style.zoom = "60%";
+}
+
 
 function getPatientCards() {
     var id = document.getElementById("clientid").value;
