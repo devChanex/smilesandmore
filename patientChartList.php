@@ -537,8 +537,8 @@
 
                                         <div id="svg-wrapper" style="position:relative; width:300px; height:300px;">
                                             <img id="toothImage" src="" style="width:100%; height:100%;">
-                                            <svg id="svgOverlay" viewBox="0 0 300 300"
-                                                style="position:absolute; top:0; left:0; width:100%; height:100%;">
+                                            <svg id="svgOverlay" width="300" height="300" viewBox="0 0 300 300"
+                                                style="position:absolute; top:0; left:0;">
                                                 <circle id="center" cx="150" cy="150" r="40" fill="transparent" />
                                                 <rect id="top" x="110" y="10" width="80" height="40"
                                                     fill="transparent" />
@@ -617,7 +617,7 @@
             <script src="controllers/patientChartListController-v2.js"></script>
             <!-- <script src="controllers/dentalchartController.js"></script> -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="controllers/dentalchartController-v2.js"></script>
+            <script src="controllers/dentalchartController-v3.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 

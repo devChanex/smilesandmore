@@ -40,8 +40,11 @@ function saveRegion() {
     const svgNode = document.getElementById("svg-wrapper");
     var clientId = document.getElementById("clientid").value;
     var remarks = document.getElementById("remarkSelect").value;
-
-    html2canvas(svgNode).then(canvas => {
+    bootstrap.Modal.getInstance(document.getElementById('drawingModal')).hide();
+    html2canvas(svgNode, {
+        scale: 1, // Prevent excessive upscaling
+        useCORS: true // If you're serving cross-origin images
+    }).then(canvas => {
         const imageData = canvas.toDataURL("image/png");
 
         const formData = new FormData();
@@ -56,7 +59,7 @@ function saveRegion() {
         }).then(res => res.json())
             .then(data => {
                 if (data.status === "success") {
-                    bootstrap.Modal.getInstance(document.getElementById('drawingModal')).hide();
+
                     getclientdentalChart();
                 }
             });
