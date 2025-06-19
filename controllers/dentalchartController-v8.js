@@ -54,7 +54,7 @@ function saveRegion() {
     if (clonedImg) {
         clonedImg.crossOrigin = "anonymous";
     }
-
+    bootstrap.Modal.getInstance(document.getElementById('drawingModal')).hide();
     // Allow rendering time especially on iOS
     setTimeout(() => {
         html2canvas(clone, {
@@ -81,7 +81,7 @@ function saveRegion() {
             }).then(res => res.json())
                 .then(data => {
                     if (data.status === "success") {
-                        bootstrap.Modal.getInstance(document.getElementById('drawingModal')).hide();
+
                         getclientdentalChart();
                     }
                 });
