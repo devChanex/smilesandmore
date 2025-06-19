@@ -37,36 +37,59 @@ function clearSVGRegions() {
 });
 
 function saveRegion() {
-    const svgNode = document.getElementById("svg-wrapper");
-    var clientId = document.getElementById("clientid").value;
-    var remarks = document.getElementById("remarkSelect").value;
-    bootstrap.Modal.getInstance(document.getElementById('drawingModal')).hide();
-    html2canvas(svgNode, {
-        scale: 1, // Prevent excessive upscaling
-        useCORS: true // If you're serving cross-origin images
-    }).then(canvas => {
-        const imageData = canvas.toDataURL("image/png");
+    const svgWrapper = document.getElementById("svg-wrapper");
+    const clientId = document.getElementById("clientid").value;
+    const remarks = document.getElementById("remarkSelect").value;
 
-        const formData = new FormData();
-        formData.append("tooth", currentTooth);
-        formData.append("image", imageData);
-        formData.append("clientid", clientId);
-        formData.append("remarks", remarks);
+    // Clone the wrapper and move it offscreen
+    const clone = svgWrapper.cloneNode(true);
+    clone.style.position = "absolute";
+    clone.style.top = "-10000px";
+    clone.style.left = "-10000px";
+    clone.style.zIndex = "-1";
+    document.body.appendChild(clone);
 
-        fetch("dentalcharts/save_remarks.php", {
-            method: "POST",
-            body: formData
-        }).then(res => res.json())
-            .then(data => {
-                if (data.status === "success") {
+    // Ensure image inside clone supports CORS
+    const clonedImg = clone.querySelector("img");
+    if (clonedImg) {
+        clonedImg.crossOrigin = "anonymous";
+    }
 
-                    getclientdentalChart();
-                }
-            });
-    });
+    // Allow rendering time especially on iOS
+    setTimeout(() => {
+        html2canvas(clone, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: false,
+            backgroundColor: null
+        }).then(canvas => {
+            const imageData = canvas.toDataURL("image/png");
 
+            const formData = new FormData();
+            formData.append("tooth", currentTooth);
+            formData.append("image", imageData);
+            formData.append("clientid", clientId);
+            formData.append("remarks", remarks);
 
+            // Cleanup clone
+            document.body.removeChild(clone);
+
+            // Save via fetch
+            fetch("dentalcharts/save_remarks.php", {
+                method: "POST",
+                body: formData
+            }).then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        bootstrap.Modal.getInstance(document.getElementById('drawingModal')).hide();
+                        getclientdentalChart();
+                    }
+                });
+        });
+    }, 300); // slight delay to ensure rendering
 }
+
+
 
 function resetDrawingModal() {
     // Reset pen color to red

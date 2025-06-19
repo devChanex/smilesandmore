@@ -5,9 +5,11 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
 
     <title>Smiles & More</title>
 
@@ -535,10 +537,12 @@
                                             <label><input type="radio" name="penColor" value="blue"> Blue</label>
                                         </div>
 
-                                        <div id="svg-wrapper" style="position:relative; width:300px; height:300px;">
-                                            <img id="toothImage" src="" style="width:100%; height:100%;">
-                                            <svg id="svgOverlay" width="300" height="300" viewBox="0 0 300 300"
-                                                style="position:absolute; top:0; left:0;">
+                                        <div id="svg-wrapper"
+                                            style="position:relative; width:300px; height:300px; overflow:hidden;">
+                                            <img id="toothImage" src=""
+                                                style="position:absolute; top:0; left:0; width:100%; height:100%;">
+                                            <svg id="svgOverlay" viewBox="0 0 300 300"
+                                                style="position:absolute; top:0; left:0; width:100%; height:100%;">
                                                 <circle id="center" cx="150" cy="150" r="40" fill="transparent" />
                                                 <rect id="top" x="110" y="10" width="80" height="40"
                                                     fill="transparent" />
@@ -550,10 +554,11 @@
                                                     fill="transparent" />
                                             </svg>
                                         </div>
+
                                         <div class="mb-3">
                                             <label for="remarkSelect" class="me-2">Remark:</label>
                                             <select id="remarkSelect" class="form-select">
-                                                <option value="-">--Select Remark --</option>
+                                                <option value="-">-- Select Remark --</option>
                                                 <option value="✔">✔- Present</option>
                                                 <option value="C">C - Caries</option>
                                                 <option value="X">X - Missing</option>
@@ -617,7 +622,7 @@
             <script src="controllers/patientChartListController-v2.js"></script>
             <!-- <script src="controllers/dentalchartController.js"></script> -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="controllers/dentalchartController-v3.js"></script>
+            <script src="controllers/dentalchartController-v7.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 
