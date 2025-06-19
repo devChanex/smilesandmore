@@ -554,10 +554,10 @@
                                             <label for="remarkSelect" class="me-2">Remark:</label>
                                             <select id="remarkSelect" class="form-select">
                                                 <option value="-">--Select Remark --</option>
-                                                <option value="✔">✔- Present Teeth</option>
-                                                <option value="D">D - Decayed (Caries indicated for Filling)</option>
-                                                <option value="M">M - Missing due to Caries</option>
-                                                <option value="MO">MO - Missing due to Other Causes</option>
+                                                <option value="✔">✔- Present</option>
+                                                <option value="C">C - Caries</option>
+                                                <option value="X">X - Missing</option>
+                                                <option value="Ex">Ex - For Extraction</option>
                                                 <option value="IM">IM - Impacted Tooth</option>
                                                 <option value="SP">Sp - Supernumerary Tooth</option>
                                                 <option value="Rf">Rf - Root Fragment</option>
@@ -567,14 +567,11 @@
                                                 <option value="JC">JC - Jacket Crown</option>
                                                 <option value="Ab">Ab - Abutment</option>
                                                 <option value="Att">Att - Attachment</option>
-                                                <option value="P">P - Pontio</option>
                                                 <option value="In">In - Inlay</option>
                                                 <option value="Imp">Imp - Implant</option>
-                                                <option value="S">S - Sealants</option>
+                                                <option value="PFS">PFS - Pit & Fissure Sealant</option>
                                                 <option value="Rm">Rm - Removable Denture</option>
-                                                <option value="X">X - Extraction due to Caries</option>
-                                                <option value="XO">XO - Extraction due to Other Causes</option>
-                                                <option value="C">C - Carries</option>
+                                                <option value="RCT">RCT - Root Canal Treated</option>
 
                                             </select>
                                         </div>
