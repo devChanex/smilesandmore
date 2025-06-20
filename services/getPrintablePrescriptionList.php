@@ -1,9 +1,10 @@
 <?php
+session_start();
 require_once('databaseService.php');
 $service = new ServiceClass();
-$clientId = urldecode($_POST['clientId']);
 
-$service->process($clientId);
+
+$result = $service->process($_POST);
 
 class ServiceClass
 {
@@ -22,19 +23,25 @@ class ServiceClass
         return $stmt;
     }
     //DO NOT INCLUDE THIS CODE
-    public function process($clientId)
+    public function process($data)
     {
+        $rxid = $data['rxid'];
+        $query = "SELECT a.genericname,a.dispense,a.signetur FROM prescriptionsub b inner join medicine a on a.medicineid=b.medicineid  where rxid=:a";
 
-
-
-        $query = "select * from orthowaiver where clientId = :clientId";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':clientId', $clientId, PDO::PARAM_INT);  // Ensure clientId is treated as a string
+        $stmt->bindParam(':a', $rxid);
+
         $stmt->execute();
+        $desc = '';
         if ($stmt->rowCount() > 0) {
-            echo 'true';
-        } else {
-            echo 'false';
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                $desc .= $row['genericname'] . ' <br> ' . $row['dispense'] . ' <br> ' . $row['signetur'] . '<br> <br>';
+
+            }
+            echo $desc;
+
         }
     }
 

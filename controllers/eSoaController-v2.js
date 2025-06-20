@@ -8,7 +8,7 @@ function loadTreatment() {
         contentType: false,
         type: 'POST',
         success: function (result) {
-            document.getElementById("treatment").innerHTML = result;
+            document.getElementById("treatment-options").innerHTML = result;
         }
     });
 
@@ -207,6 +207,7 @@ function submit() {
     var time = document.getElementById("time").value;
     var clientid = document.getElementById("clientid").value;
     var hmo = document.getElementById("hmo").value;
+
     if (rowCount == 0) {
         toastError("You do not have any treatment added.");
     } else if (dentist == "" || dates == "" || time == "") {
@@ -218,22 +219,22 @@ function submit() {
             var fd = new FormData();
             fd.append('clientId', clientid);
             $.ajax({
-                url: "services/esoaSubmitSubService.php",
+                url: "services/orthowaiverChecker.php",
                 data: fd,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (result) {
                     consentExist = result;
+
+                    if (consentExist == 'true') {
+                        submitform(dentist, dates, time, clientid, total, hmo);
+                    } else {
+                        toastError("You need to submit waiver form for Orthodontic Treatment first before submitting E-SOA.");
+                    }
                 }
             });
 
-            if (consentExist) {
-                submitform(dentist, dates, time, clientid, total, hmo);
-
-            } else {
-                toastError("You need to submit waiver form for Orthodontic Treatment first before submitting E-SOA.");
-            }
 
 
         } else {

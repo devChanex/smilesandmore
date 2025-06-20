@@ -132,9 +132,16 @@
                                 <div class="col-lg-6">
 
                                     <label for="treatment">Treatment</label>
-                                    <select id="treatment" name="treatment" class="form-control">
+                                    <input list="treatment-options" id="treatment" name="treatment"
+                                        class="form-control" />
 
-                                    </select>
+                                    <datalist id="treatment-options">
+
+                                        <!-- Add more options as needed -->
+                                    </datalist>
+                                    <!-- <select id="treatment" name="treatment" class="form-control">
+
+                                    </select> -->
                                     <label for="diagnosis">Diagnosis</label>
                                     <textarea id="diagnosis" class="form-control" name="diagnosis"
                                         placeholder="Diagnosis"></textarea>
@@ -228,7 +235,7 @@
             <script src="js/sb-admin-2.min.js"></script>
             <script src="controllers/logOutConroller.js"></script>
             <script src="controllers/sessionController.js"></script>
-            <script src="controllers/eSoaController-v1.js"></script>
+            <script src="controllers/eSoaController-v2.js"></script>
             <script src="controllers/divPrinterController-v1.js"></script>
             <script src="js/custom-v2.js"></script>
 </body>

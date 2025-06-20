@@ -69,20 +69,15 @@ echo '
                     <span>E-SOA/Xray</span>
                 </a>
         </li>
-        <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#config" aria-expanded="false"
-                    aria-controls="config">
-                    <i class="fas fa-cog"></i>
-                    <span>Configurations</span>
-                    </a>
-                <div id="config" class="collapse" aria-labelledby="config"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="treatmentList.php">Treatment List</a>
-                     
-                    </div>
-                </div>
-            </li>
+        </li>
+     <li class="nav-item">
+    <a class="nav-link" href="prescriptionList.php" >
+        <i class="fas fa-notes-medical"></i>
+        <span>Prescription</span>
+    </a>
+   
+    </li>
+       
 
                <li class="nav-item">
     <a class="nav-link" href="expensesList.php" >
@@ -90,7 +85,7 @@ echo '
         <span>Expenses</span>
     </a>
    
-    </li>
+    
             ';
 
 
@@ -117,7 +112,21 @@ echo '
         </div>
     </div>
 </li>
-        
+         <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#config" aria-expanded="false"
+                    aria-controls="config">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurations</span>
+                    </a>
+                <div id="config" class="collapse" aria-labelledby="config"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="treatmentList.php">Treatment List</a>
+                         <a class="collapse-item" href="medicineList.php">Medicine List</a>
+                     
+                    </div>
+                </div>
+            </li>
         <!-- End of Sidebar -->
 
 ';

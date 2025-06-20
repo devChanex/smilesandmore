@@ -133,3 +133,8 @@
     background-color: #622c9e !important;
     color: white !important;
 }
+
+.modal-xl-custom {
+    max-width: 95% !important;
+    /* or any %/px you prefer */
+}

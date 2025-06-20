@@ -49,16 +49,16 @@ function signature() {
         contentType: false,
         type: 'POST',
         success: function (result) {
-            if (result == "true") {
-                openSignatureModal(function (sigData) {
-                    setSignature('patient', sigData);
-                });
-            } else if (result == "false") {
-                toastError("This is already signed by the patient.");
+            // if (result == "true") {
+            openSignatureModal(function (sigData) {
+                setSignature('patient', sigData);
+            });
+            // } else if (result == "false") {
+            //     toastError("This is already signed by the patient.");
 
-            } else {
+            // } else {
 
-            }
+            // }
         }
     });
 }

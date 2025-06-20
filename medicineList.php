@@ -21,6 +21,7 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -40,20 +41,17 @@
 
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid" id="content-table">
+                <div class="container-fluid" id="content-table" style="padding-left:20%;padding-right:20%;">
 
                     <!-- Page Heading -->
                     <div class="card shadow mb-12">
                         <div class="card-header py-3 <?php echo $cards; ?>">
-
-                            <h6 class="m-0 font-weight-bold">RECORDS OF SOA AS OF:
-                                <?php $dToday = date('Y-m-d');
-                                echo $dToday; ?>
-                            </h6>
-
+                            <strong>Medicine List</strong>
+                            <a href="#" data-toggle="modal" data-target="#editTreatmentModal"
+                                class="btn btn-warning btn-circle float-right" title="Add treatment"><i
+                                    class="fas fa-plus"></i></a>
                         </div>
                         <div class="card-body">
-
                             <!-- USE THIS SPACE FOR YOUR ADDITIONAL CODE SNIPPET -->
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -61,30 +59,14 @@
                                         cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>SOA ID</th>
 
-                                                <th>Full Name</th>
-                                                <th>Dentist</th>
-                                                <th>Treatment</th>
-                                                <th>Price</th>
-                                                <th>Balance</th>
-                                                <th>Date</th>
+                                                <th>Generic Name</th>
+                                                <th>Dispense</th>
+                                                <th>Signetur</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>SOA ID</th>
 
-                                                <th>Full Name</th>
-                                                <th>Dentist</th>
-                                                <th>Treatment</th>
-                                                <th>Price</th>
-                                                <th>Balance</th>
-                                                <th>Date</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
                                         <tbody id="resultResponsez">
 
 
@@ -96,6 +78,35 @@
 
 
 
+                            <div class="modal fade" id="editTreatmentModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form>
+                                            <div class="card-header py-3 <?php echo $cards; ?>">
+                                                <h5 class="modal-title">Medicine</h5>
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="hidden" id="editTreatmentId">
+                                                Generic Name:
+                                                <input type="text" class="form-control mb-2" id="editGenericName">
+                                                Dispense:
+                                                <input type="text" class="form-control mb-2" id="editDispense">
+                                                Signetur:
+                                                <textarea class="form-control mb-2" id="editSignetur"
+                                                    rows="3"></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="buttton" class="btn btn-primary"
+                                                    onclick="SaveMedicine();">Save</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
 
 
@@ -122,6 +133,7 @@
             <script src="vendor/datatables/jquery.dataTables.min.js"></script>
             <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+
             <!-- Page level custom scripts -->
             <script src="js/demo/datatables-demo.js"></script>
 
@@ -129,9 +141,9 @@
             <script src="js/sb-admin-2.min.js"></script>
             <script src="controllers/logOutConroller.js"></script>
             <script src="controllers/sessionController.js"></script>
-            <script src="controllers/getAllSoaListController.js"></script>
-            <script src="controllers/soaViewingController-v7.js"></script>
-            <script src="controllers/divPrinterController-v1.js"></script>
+            <script src="controllers/getmedicineListController.js"></script>
+            <script src="js/custom-v2.js"></script>
+
 
 
 

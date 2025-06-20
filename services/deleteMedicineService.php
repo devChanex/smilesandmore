@@ -1,9 +1,7 @@
 <?php
 require_once('databaseService.php');
 $service = new ServiceClass();
-$clientId = urldecode($_POST['clientId']);
-
-$service->process($clientId);
+$result = $service->process($_POST);
 
 class ServiceClass
 {
@@ -22,20 +20,25 @@ class ServiceClass
         return $stmt;
     }
     //DO NOT INCLUDE THIS CODE
-    public function process($clientId)
+    public function process($data)
     {
 
 
+        $medid = $data['medid'];
 
-        $query = "select * from orthowaiver where clientId = :clientId";
+
+
+        $query = "delete from medicine where medicineid=:x";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':clientId', $clientId, PDO::PARAM_INT);  // Ensure clientId is treated as a string
+        $stmt->bindParam(':x', $medid);
+
+
         $stmt->execute();
-        if ($stmt->rowCount() > 0) {
-            echo 'true';
-        } else {
-            echo 'false';
-        }
+
+        echo 'success';
+
+
+
     }
 
 }
