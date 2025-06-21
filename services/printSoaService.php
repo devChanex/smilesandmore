@@ -36,14 +36,24 @@ class ServiceClass
             if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo '
-                <div class="row">
-                <div class="col-lg-6"><strong>Smiles & More</strong></div>
-                <div class="col-lg-6" style="text-align:right;">Bringing you, your best smile!</div>
+           <div class="row align-items-center">
+            <div class="col-lg-6 d-flex align-items-center" style="text-align:left;">
+                    <img src="img/white_logo_final.jpg" alt="Company Logo" style="height: 40px; margin-right: 10px;">
+                    <strong>Smiles & More</strong>
+                </div>
+                <div class="col-lg-6" style="text-align:right;">
+                    Bringing you, your best smile!
+                </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias Angeles
-                                    City Pampanga PH 2009</div>
-                <div class="col-lg-12">0927-605-8418 / 0960-437-5938</div>
+                <div class="col-lg-12">
+                    Stall B Josefa St. Josefaville 1 Subd Brgy Malabanias Angeles City Pampanga PH 2009
+                </div>
+                <div class="col-lg-12">
+                    0927-605-8418 / 0960-437-5938
+                </div>
+            </div>
+
                 <hr>
                 <div class="col-lg-12" style="text-align:center;"><strong>Electronic Statement of Account - ESOA</strong></div>
             </div>
