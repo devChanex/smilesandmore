@@ -25,7 +25,7 @@ class ServiceClass
     //DO NOT INCLUDE THIS CODE
     public function process($clientid)
     {
-        $superuser = "sam_2025";
+        $superuser = "nikesarmiento";
 
 
         $query = "select a.soaid,tsubid,hmo,price,date,dentist,treatment,remarks,details,diagnosis from treatmentsoa a inner join treatmentsub b on a.soaid=b.soaid where a.clientid=:a order by Date";

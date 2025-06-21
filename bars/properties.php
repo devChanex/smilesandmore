@@ -2,7 +2,7 @@
 $cards = "bg-purple text-white text-lg";
 $systemname = "Smiles & More";
 $sidebarColor = "bg-purple";
-$superuser = "sam_2025";
+$superuser = "nikesarmiento";
 $dentist = [
     "Dr. Nikki Sarmiento",
     "Dr. Mike Marcos",
