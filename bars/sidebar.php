@@ -81,7 +81,7 @@ echo '
   
 
 <a class="collapse-item" href="statementofaccounts.php">Statement of Account</a>
-<a class="collapse-item" href="clientTreatmentReport.php">Patient Treatments</a>
+
 <a class="collapse-item" href="incomedaterange.php">Income Statement</a>
 <a class="collapse-item" href="dailytransactionsummary.php">Daily Transaction Summary</a>
 <a class="collapse-item" href="monthlyexpensesummary.php">Monthly Expense Summary</a>
