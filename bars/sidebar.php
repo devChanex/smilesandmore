@@ -174,7 +174,7 @@ else
             ';
 
 
-// if ($_SESSION["username"] == $superuser) {
+
 echo '
 <li class="nav-item">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#report" aria-expanded="false"
