@@ -34,6 +34,8 @@ class ServiceClass
         }
 
         $grandAccumulatedPayments = 0;
+        $grandSubcharge = 0;
+        $grandccpayment = 0;
 
         //MAIN
         $dateToday = date("Y-m-d");
@@ -88,9 +90,11 @@ class ServiceClass
         $stmt0->execute();
         $paymentType = '';
         $totalIncome = 0;
+
+
         if ($stmt0->rowCount() > 0) {
             while ($row0 = $stmt0->fetch(PDO::FETCH_ASSOC)) {
-
+                $ccpayment = 0;
                 $sortkey = $row0["result"];
                 echo '<div class="row-"><h4>' . $group . ': ' . $sortkey . '</h4></div>';
 
@@ -199,27 +203,48 @@ class ServiceClass
                 <td>' . $row["paymenttype"] . '</td>
                <td>' . date("Y/m/d", strtotime($row["paymentdate"])) . '</td>
             </tr>';
+
+                        if ($row["paymenttype"] == "Credit Card") {
+                            $ccpayment += $row["amount"];
+                            $grandccpayment += $row["amount"];
+                        }
                     }
                 }
                 echo '
-<tr>
+<tr style="background-color: #f9f9f9">
               
-                <td colspan="5">Total </td>
+                <td colspan="5"><strong>Gross Income: </strong></td>
                 
                 <td style="text-align:right;"><strong>' . number_format($total, 2) . '</strong></td>
                 <td colspan="2"></td>      
             </tr>
 ';
-                $grandAccumulatedPayments += $total;
+
+                $ccsubcharge = $ccpayment * .04;
                 echo '
-<tr>
+<tr style="background-color: #f9f9f9">
               
-                <td colspan="5">Grand Total </td>
+                <td colspan="5" style="border: none;"><strong>Subcharge (CC)):</strong></td>
                 
-                <td style="text-align:right;"><strong>' . number_format($grandAccumulatedPayments, 2) . '</strong></td>
+                <td style="text-align:right;border:none;"><strong>' . number_format($ccsubcharge, 2) . '</strong></td>
+                <td colspan="2" style="border: none;"></td>      
+            </tr>
+';
+
+
+                echo '
+<tr style="background-color: #f9f9f9">
+              
+                <td colspan="5"><strong>Net Income :</strong></td>
+                
+                <td style="text-align:right;"><strong>' . number_format($total - $ccsubcharge, 2) . '</strong></td>
                 <td colspan="2"></td>      
             </tr>
 ';
+
+                $grandAccumulatedPayments += $total;
+                $grandSubcharge += $ccsubcharge;
+
 
                 echo '  </tbody>
                                     </table>
@@ -228,6 +253,36 @@ class ServiceClass
             }
 
         }
+
+        echo '
+<div style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; border-radius: 8px;">
+    <h5 style="margin-bottom: 15px; text-align: center;"> <strong> Summary Report</strong></h5>
+    
+    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span><strong>Total Gross Income:</strong></span>
+        <span>₱' . number_format($grandAccumulatedPayments, 2) . '</span>
+    </div>
+    
+        <hr>
+     <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+    
+        <span><strong>Total Credit Card Payments:</strong></span>
+        <span>₱' . number_format($grandccpayment, 2) . '</span>
+    </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+    
+        <span><strong>Total Subcharge (CC):</strong></span>
+        <span>₱' . number_format($grandSubcharge, 2) . '</span>
+    </div>
+    <hr>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+    
+        <span><strong>Total Net Income:</strong></span>
+        <span>₱' . number_format($grandAccumulatedPayments - $grandSubcharge, 2) . '</span>
+    </div>
+   
+</div>
+';
 
         //ENDMAIN
 

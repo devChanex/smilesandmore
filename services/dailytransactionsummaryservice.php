@@ -391,7 +391,7 @@ class ServiceClass
 ';
 
                 echo '
-<tr style="background-color: #f9f9f9;; border:none !important;">
+<tr style="background-color: #f9f9f9;">
               
                 <td colspan="5"><strong>Net Subtotal </strong></td>
                 
