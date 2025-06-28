@@ -2,6 +2,7 @@
 
 include_once("properties.php");
 session_start();
+error_reporting(0);
 echo '
  <!-- Sidebar -->
         <ul class="navbar-nav ' . $sidebarColor . ' sidebar sidebar-dark  toggled" id="accordionSidebar">
@@ -23,7 +24,7 @@ if ($_SESSION["username"] == $superuser) {
                     <span>Dashboard</span></a>
             </li>
 ';
-echo '
+    echo '
                 <li class="nav-item">
                 <a class="nav-link" href="clientProfileList.php" >
                     <i class="fas fa-address-card"></i>
@@ -68,8 +69,8 @@ echo '
             ';
 
 
-// if ($_SESSION["username"] == $superuser) {
-echo '
+    // if ($_SESSION["username"] == $superuser) {
+    echo '
 <li class="nav-item">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#report" aria-expanded="false"
         aria-controls="config">
@@ -109,12 +110,12 @@ echo '
         <!-- End of Sidebar -->
 
 ';
-//  <a class="collapse-item" href="soadaterange.php">SOA Summary per Date</a>
+    //  <a class="collapse-item" href="soadaterange.php">SOA Summary per Date</a>
 //     <a class="collapse-item" href="soaperclient.php">SOA Summary per Client</a>
 //      <a class="collapse-item" href="soaperdentist.php">SOA Summary per Dentist</a>
 
 
-//      <a class="collapse-item" href="clienttreatmentrecordperdentist.php">CT Records per Dentist</a>
+    //      <a class="collapse-item" href="clienttreatmentrecordperdentist.php">CT Records per Dentist</a>
 //     <a class="collapse-item" href="clienttreatmentrecordperclient.php">CT Records per Client</a>
 // <a class="collapse-item" href="clienttreatmentrecordperdentist.php">CT Records per Dentist</a>
 //   <a class="collapse-item" href="soadaterange.php">SOA Summary per Date</a>
@@ -130,9 +131,7 @@ echo '
 //     <span>Consent List</span>
 // </a>
 // </li>
-}
-else
-{
+} else {
     echo '
                 <li class="nav-item">
                 <a class="nav-link" href="clientProfileList.php" >
@@ -175,7 +174,7 @@ else
 
 
 
-echo '
+    echo '
 <li class="nav-item">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#report" aria-expanded="false"
         aria-controls="config">
