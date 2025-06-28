@@ -46,7 +46,7 @@ class ServiceClass
             $dynamics = 'AND (' . implode(' OR ', $orConditions) . ')';
         }
         // Using prepared statements for query to avoid SQL injection
-        $query = "select count(a.date) as itemCount from treatmentsoa a inner join clientprofile b on a.clientid=b.clientid  $dynamics order by a.soaid asc";
+        $query = "select count(a.date) as itemCount from treatmentsoa a inner join clientprofile b on a.clientid=b.clientid  $dynamics order by a.soaid desc";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':search', $search, PDO::PARAM_STR);
