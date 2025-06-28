@@ -208,7 +208,7 @@ error_reporting(0);
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header <?php echo $cards; ?>">
-                                    <h5 class="modal-title" id="editExpenseModalLabel">Prescription</h5>
+                                    <h5 class="modal-title" id="editExpenseModalLabel">Dental Certificate</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -305,7 +305,7 @@ error_reporting(0);
 
                             <div class="modal-content">
                                 <div class="modal-header <?php echo $cards; ?>">
-                                    <h5 class="modal-title" id="editExpenseModalLabel">Prescription</h5>
+                                    <h5 class="modal-title" id="editExpenseModalLabel">Dental Certificate</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
