@@ -39,7 +39,7 @@ class ServiceClass
                 $amount = $row["amount"];
             }
         }
-        return date('F') . ' - ' . $amount;
+        return date('F') . ' - ' . number_format($amount, 2);
     }
 
 }

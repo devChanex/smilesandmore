@@ -125,7 +125,7 @@ function loadDashAppointments() {
         contentType: false,
         type: 'POST',
         success: function (result) {
-            document.getElementById("dashhmoRecord").innerHTML = formatThis(result);
+            document.getElementById("dashhmoRecord").innerHTML = result;
         }
     });
 
@@ -139,7 +139,7 @@ function loadDashPendings() {
         contentType: false,
         type: 'POST',
         success: function (result) {
-            document.getElementById("dashConsent").innerHTML = formatThis(result);
+            document.getElementById("dashConsent").innerHTML = result;
         }
     });
 
