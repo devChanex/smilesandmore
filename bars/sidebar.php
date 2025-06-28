@@ -34,19 +34,13 @@ if ($_SESSION["username"] == $superuser) {
             </li>
 
    
-        <li class="nav-item">
-    <a class="nav-link" href="hmoList.php" >
-        <i class="fas fa-heart"></i>
-        <span>HMO</span>
-    </a>
-   
-    </li>
+       
 
 
         <li class="nav-item">
                 <a class="nav-link" href="soaList.php" >
                     <i class="fas fa-credit-card"></i>
-                    <span>E-SOA/Xray</span>
+                    <span>E-SOA</span>
                 </a>
         </li>
         </li>
@@ -150,19 +144,13 @@ if ($_SESSION["username"] == $superuser) {
             </li>
 
    
-        <li class="nav-item">
-    <a class="nav-link" href="hmoList.php" >
-        <i class="fas fa-heart"></i>
-        <span>HMO</span>
-    </a>
-   
-    </li>
+       
 
 
         <li class="nav-item">
                 <a class="nav-link" href="soaList.php" >
                     <i class="fas fa-credit-card"></i>
-                    <span>E-SOA/Xray</span>
+                    <span>E-SOA</span>
                 </a>
         </li>
         </li>
