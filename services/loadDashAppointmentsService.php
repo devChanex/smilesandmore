@@ -26,7 +26,7 @@ class ServiceClass
 
 
 
-        $query = "SELECT sum(amount) as amount 
+        $query = "SELECT *
           FROM treatmentsubpayment 
           WHERE MONTH(paymentdate) = MONTH(CURDATE()) 
             AND YEAR(paymentdate) = YEAR(CURDATE())";
@@ -34,12 +34,18 @@ class ServiceClass
 
         $stmt->execute();
         $amount = 0;
+        $creditcard = 0;
         if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $amount = $row["amount"];
+                $amount += $row["amount"];
+                if ($row["paymenttype"] == "Credit Card") {
+                    $creditcard += $row["amount"];
+                }
             }
         }
-        return date('F') . ' - ' . number_format($amount, 2);
+
+        $subcharge = $creditcard * .04;
+        return date('F') . ' - ' . number_format($amount - $subcharge, 2);
     }
 
 }
