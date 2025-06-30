@@ -18,7 +18,10 @@ function loadEarningsBar() {
             var data = JSON.parse(result);
             const maxValue = Math.max(...data.datas);
 
-            chartBar("earningsbar", data.label, data.datas, maxValue + 5000, "Earnings: ");
+            const step = 50000;
+            const roundedMax = Math.ceil(maxValue / step) * step;
+
+            chartBar("earningsbar", data.label, data.datas, roundedMax, "Earnings: ");
             //you can uncomment this for checking
             //  document.getElementById("jsResult").innerHTML=result;
         }
@@ -38,7 +41,9 @@ function loadMonthlyEarningsBar() {
             var data = JSON.parse(result);
 
             const maxValue = Math.max(...data.datas);
-            chartBar("monthlyearningsbar", data.label, data.datas, maxValue + 5000, "Earnings: ");
+            const step = 50000;
+            const roundedMax = Math.ceil(maxValue / step) * step;
+            chartBar("monthlyearningsbar", data.label, data.datas, roundedMax, "Earnings: ");
             //you can uncomment this for checking
             //  document.getElementById("jsResult").innerHTML=result;
         }
@@ -58,7 +63,9 @@ function loadPatientsBar() {
             var data = JSON.parse(result);
 
             const maxValue = Math.max(...data.datas);
-            chartBar2("patientsbar", data.label, data.datas, maxValue + 10, "Patients: ");
+            const step = 50;
+            const roundedMax = Math.ceil(maxValue / step) * step;
+            chartBar2("patientsbar", data.label, data.datas, roundedMax, "Patients: ");
             //you can uncomment this for checking
             //  document.getElementById("jsResult").innerHTML=result;
         }
@@ -78,7 +85,9 @@ function loadMonthlyPatientsBar() {
             var data = JSON.parse(result);
 
             const maxValue = Math.max(...data.datas);
-            chartBar2("monthlypatientsbar", data.label, data.datas, maxValue + 10, "Patients: ");
+            const step = 50;
+            const roundedMax = Math.ceil(maxValue / step) * step;
+            chartBar2("monthlypatientsbar", data.label, data.datas, roundedMax, "Patients: ");
             //you can uncomment this for checking
             //  document.getElementById("jsResult").innerHTML=result;
         }
