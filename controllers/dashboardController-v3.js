@@ -16,9 +16,9 @@ function loadEarningsBar() {
         type: 'POST',
         success: function (result) {
             var data = JSON.parse(result);
+            const maxValue = Math.max(...data.datas);
 
-
-            chartBar("earningsbar", data.label, data.datas, 3000000, "Earnings: ");
+            chartBar("earningsbar", data.label, data.datas, maxValue + 5000, "Earnings: ");
             //you can uncomment this for checking
             //  document.getElementById("jsResult").innerHTML=result;
         }
@@ -37,8 +37,8 @@ function loadMonthlyEarningsBar() {
         success: function (result) {
             var data = JSON.parse(result);
 
-
-            chartBar("monthlyearningsbar", data.label, data.datas, 1000000, "Earnings: ");
+            const maxValue = Math.max(...data.datas);
+            chartBar("monthlyearningsbar", data.label, data.datas, maxValue + 5000, "Earnings: ");
             //you can uncomment this for checking
             //  document.getElementById("jsResult").innerHTML=result;
         }
@@ -57,8 +57,8 @@ function loadPatientsBar() {
         success: function (result) {
             var data = JSON.parse(result);
 
-
-            chartBar2("patientsbar", data.label, data.datas, 800, "Patients: ");
+            const maxValue = Math.max(...data.datas);
+            chartBar2("patientsbar", data.label, data.datas, maxValue + 10, "Patients: ");
             //you can uncomment this for checking
             //  document.getElementById("jsResult").innerHTML=result;
         }
@@ -77,8 +77,8 @@ function loadMonthlyPatientsBar() {
         success: function (result) {
             var data = JSON.parse(result);
 
-
-            chartBar2("monthlypatientsbar", data.label, data.datas, 500, "Patients: ");
+            const maxValue = Math.max(...data.datas);
+            chartBar2("monthlypatientsbar", data.label, data.datas, maxValue + 10, "Patients: ");
             //you can uncomment this for checking
             //  document.getElementById("jsResult").innerHTML=result;
         }

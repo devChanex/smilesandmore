@@ -243,7 +243,7 @@ if ($_SESSION["username"] != $superuser) {
             <script src="vendor/chart.js/Chart.min.js"></script>
             <script src="controllers/barchart.js"></script>
 
-            <script src="controllers/dashboardController-v2.js"></script>
+            <script src="controllers/dashboardController-v3.js"></script>
             <!-- Core plugin JavaScript-->
             <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
