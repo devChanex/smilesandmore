@@ -15,7 +15,7 @@ echo '
           
 ';
 
-if ($_SESSION["account_type"] == 0 || $_SESSION["account_type"] == 100) {
+if ($_SESSION["account_type"] == 0) {
     echo '
    <!-- Nav Item - Dashboard -->
             <li class="nav-item">
