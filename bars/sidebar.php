@@ -15,7 +15,7 @@ echo '
           
 ';
 
-if ($_SESSION["username"] == $superuser) {
+if ($_SESSION["account_type"] == 0 || $_SESSION["account_type"] == 100) {
     echo '
    <!-- Nav Item - Dashboard -->
             <li class="nav-item">
@@ -133,7 +133,9 @@ if ($_SESSION["username"] == $superuser) {
 //     <span>Consent List</span>
 // </a>
 // </li>
-} else {
+} 
+elseif($_SESSION["account_type"] == 1)
+ {
     echo '
                 <li class="nav-item">
                 <a class="nav-link" href="clientProfileList.php" >
@@ -168,14 +170,7 @@ if ($_SESSION["username"] == $superuser) {
     </a>
    
     </li>
-       
-
-
-   
-    
             ';
-
-
 
     echo '
 <li class="nav-item">
@@ -186,14 +181,80 @@ if ($_SESSION["username"] == $superuser) {
     </a>
     <div id="report" class="collapse" aria-labelledby="report" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-  
-
 
 <a class="collapse-item" href="dailytransactionsummary.php">Daily Transaction Summary</a>
 
           
- 
+        </div>
+    </div>
+</li>
+         <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#config" aria-expanded="false"
+                    aria-controls="config">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurations</span>
+                    </a>
+                <div id="config" class="collapse" aria-labelledby="config"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="treatmentList.php">Treatment List</a>
+                         <a class="collapse-item" href="medicineList.php">Medicine List</a>
+                     
+                    </div>
+                </div>
+            </li>
+        <!-- End of Sidebar -->
 
+';
+}
+elseif($_SESSION["account_type"] == 2)
+ {
+    echo '
+                <li class="nav-item">
+                <a class="nav-link" href="clientProfileList.php" >
+                    <i class="fas fa-address-card"></i>
+                    <span>Patient\'s Profile</span>
+                    </a>
+               
+            </li>
+
+   
+       
+
+
+        <li class="nav-item">
+                <a class="nav-link" href="soaList.php" >
+                    <i class="fas fa-credit-card"></i>
+                    <span>E-SOA</span>
+                </a>
+        </li>
+        </li>
+     <li class="nav-item">
+    <a class="nav-link" href="prescriptionList.php" >
+        <i class="fas fa-notes-medical"></i>
+        <span>Prescription</span>
+    </a>
+   
+    </li>
+     <li class="nav-item">
+    <a class="nav-link" href="dentalcertList.php" >
+        <i class="fas fa-certificate"></i>
+        <span>Dental Certificate</span>
+    </a>
+   
+    </li>
+            ';
+
+    echo '
+<li class="nav-item">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#report" aria-expanded="false"
+        aria-controls="config">
+        <i class="fas fa-file"></i>
+        <span>Reports</span>
+    </a>
+    <div id="report" class="collapse" aria-labelledby="report" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+<a class="collapse-item" href="clientTreatmentReport.php">Patient Treatments</a>
         </div>
     </div>
 </li>
