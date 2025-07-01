@@ -134,7 +134,7 @@ if ($_SESSION["account_type"] == 0) {
 // </a>
 // </li>
 }
-if ($_SESSION["account_type"] == 100) {
+elseif ($_SESSION["account_type"] == 100) {
     echo '
    <!-- Nav Item - Dashboard -->
             <li class="nav-item">
