@@ -43,7 +43,7 @@ class ServiceClass
             $dynamics = '(' . implode(' OR ', $orConditions) . ')';
         }
 
-        $dynamics .= 'ORDER BY date,expenseid DESC LIMIT :limit OFFSET :offset';
+        $dynamics .= 'ORDER BY expenseid DESC LIMIT :limit OFFSET :offset';
         // Using prepared statements for query to avoid SQL injection
         $query = "SELECT * FROM expenses WHERE $dynamics ";
 
