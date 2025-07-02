@@ -161,25 +161,31 @@ function submitPaymentForm() {
 }
 
 function deletePayment(ref, amount) {
+    var usertype = document.getElementById("usertypeTopbar").value;
 
-    if (confirm("Do you want to delete this payment amounting to " + amount + "?")) {
-        var fd = new FormData();
-        fd.append("ref", ref);
-        $.ajax({
-            url: "services/paymentDeletionService.php",
-            data: fd,
-            processData: false,
-            contentType: false,
-            type: 'POST',
-            success: function (result) {
-                if (result == 'Success') {
+    if (usertype == 0 || usertype == 100) {
+        if (confirm("Do you want to delete this payment amounting to " + amount + "?")) {
+            var fd = new FormData();
+            fd.append("ref", ref);
+            $.ajax({
+                url: "services/paymentDeletionService.php",
+                data: fd,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (result) {
+                    if (result == 'Success') {
 
-                    toastSuccess("Payment Deleted.");
-                    loadSoa();
-                } else {
-                    toastError("An Error occured: " + result);
+                        toastSuccess("Payment Deleted.");
+                        loadSoa();
+                    } else {
+                        toastError("An Error occured: " + result);
+                    }
                 }
-            }
-        });
+            });
+        }
+    } else {
+        toastError("You do not have permission to delete payment.");
     }
+
 }

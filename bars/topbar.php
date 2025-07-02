@@ -50,7 +50,7 @@ echo '</strong>
                             </div>
                             
                         </li>
-
+                        <input type="hidden" id="usertypeTopbar" value="' . $_SESSION["account_type"] . '">
                     </ul>
 
                 </nav>
