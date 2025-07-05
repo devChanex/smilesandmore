@@ -28,7 +28,7 @@ class ServiceClass
         $superuser = "nikesarmiento";
 
 
-        $query = "select a.soaid,tsubid,hmo,price,date,dentist,treatment,remarks,details,diagnosis from treatmentsoa a inner join treatmentsub b on a.soaid=b.soaid where a.clientid=:a order by Date";
+        $query = "select a.soaid,tsubid,hmo,price,date,dentist,treatment,remarks,details,diagnosis,hmoaccredited from treatmentsoa a inner join treatmentsub b on a.soaid=b.soaid where a.clientid=:a order by Date";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':a', $clientid);
         $stmt->execute();
@@ -63,6 +63,7 @@ class ServiceClass
                 $stmt3 = $this->conn->prepare($query3);
                 $stmt3->bindParam(':a', $tsubid);
                 $totalPayments = 0;
+                $totalBalance = 0;
                 $stmt3->execute();
                 echo '';
                 if ($stmt3->rowCount() > 0) {

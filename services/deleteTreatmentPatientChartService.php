@@ -31,24 +31,50 @@ class ServiceClass
         $stmt->bindParam(':g', $tsubid);
         $stmt->execute();
 
-        $totalFee = 0;
-        $query = "select sum(price) as fee from treatmentsub where soaid=:a";
+        $query = "delete from treatmentsubpayment where tsubid=:g";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':g', $tsubid);
+        $stmt->execute();
+
+
+
+        //check if soa still contains treatmentsub
+        $query = "select tsubid from treatmentsub where soaid=:a";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':a', $soaid);
         $stmt->execute();
+        $shouldDelete = true;
         if ($stmt->rowCount() > 0) {
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                $totalFee = $row["fee"];
-            }
+            $shouldDelete = false;
         }
 
-        $query = "update treatmentsoa  set total=:a where soaid=:b";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':a', $totalFee);
-        $stmt->bindParam(':b', $soaid);
 
-        $stmt->execute();
+        if ($shouldDelete == "Yes") {
+            $query = "delete from treatmentsoa where soaid=:a";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':a', $soaid);
+            $stmt->execute();
+        } else {
+
+            $totalFee = 0;
+            $query = "select sum(price) as fee from treatmentsub where soaid=:a";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':a', $soaid);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                    $totalFee = $row["fee"];
+                }
+            }
+            $query = "update treatmentsoa  set total=:a where soaid=:b";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':a', $totalFee);
+            $stmt->bindParam(':b', $soaid);
+
+            $stmt->execute();
+        }
+
 
 
 

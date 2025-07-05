@@ -80,7 +80,7 @@ $(document).on('click', '.edit-btn', function () {
 
 function deleteTreatment(soaid, tsubid) {
 
-    if (confirm("Do you want  delete this treatment ?")) {
+    if (confirm("Do you want  delete this treatment? Note: All payments related to this treatment will also be deleted.")) {
         var fd = new FormData();
         fd.append('soaid', soaid);
         fd.append('tsubid', tsubid);
@@ -96,7 +96,7 @@ function deleteTreatment(soaid, tsubid) {
                 getclientdata(); // Refresh the data table after update
                 getPatientCards(); // Refresh the patient cards after update    
                 // Optionally refresh data or show a success toast
-                toastSuccess('Treatment deleted successfully!');
+                toastReload("successToast", 'Treatment deleted successfully!');
             },
             error: function () {
                 toastError('Failed to delete treatment.');
