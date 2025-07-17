@@ -273,7 +273,7 @@ class ServiceClass
                                         echo '<br>';
                                     }
                                     if ($row14["paymenttype"] == "Credit Card") {
-                                        $creditsubpayment += $row14["amountt"];
+                                        $creditsubpayment += $row14["amount"];
                                     }
 
                                     $totalPayments = $totalPayments + $row14["amount"];
