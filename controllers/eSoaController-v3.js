@@ -307,6 +307,7 @@ function submitSubSoa(soaid) {
 
 
     }
+    toastRedirect("successToast", "E-SOA successfully submitted", "soaViewing.php?soaid=" + soaid);
 
 
 }
@@ -330,7 +331,7 @@ function submitSubSoatoService(treatment, diagnosis, details, remarks, price, cl
         contentType: false,
         type: 'POST',
         success: function (result) {
-            toastRedirect("successToast", "E-SOA successfully submitted", "soaViewing.php?soaid=" + soaid);
+            console.log(result);
         }
     });
 
