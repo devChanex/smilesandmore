@@ -51,11 +51,15 @@ error_reporting(0);
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid" id="content-table">
-                    <div class="row" id="patientCards">
+                    <div class="row" id="patientCards" <?php if ($_SESSION["account_type"] == 200) {
+                        echo 'style="display:none;"';
+                    } ?>>
                     </div>
 
                     <!-- Page Heading -->
-                    <div class="card shadow mb-12">
+                    <div class="card shadow mb-12" <?php if ($_SESSION["account_type"] == 200) {
+                        echo 'style="display:none;"';
+                    } ?>>
                         <div class="card-header py-3 <?php echo $cards; ?>">
                             <h6 class="m-0 font-weight-bold">Patient Chart : <?php echo $_GET["clientname"]; ?></h6>
                             <input type="hidden" id="clientid" value="<?php echo $_GET["id"]; ?>">

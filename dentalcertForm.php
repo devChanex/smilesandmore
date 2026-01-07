@@ -48,7 +48,7 @@ error_reporting(0);
                 <div class="container-fluid" id="content-table">
 
                     <div class="row">
-                        <div class="col-lg-6  mx-auto">
+                        <div class="col-lg-9  mx-auto">
                             <!-- Page Heading -->
                             <div class="card shadow mb-12">
                                 <div class="card-header py-3 <?php echo $cards; ?>">

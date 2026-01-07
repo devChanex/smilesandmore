@@ -133,8 +133,7 @@ if ($_SESSION["account_type"] == 0) {
 //     <span>Consent List</span>
 // </a>
 // </li>
-}
-elseif ($_SESSION["account_type"] == 100) {
+} elseif ($_SESSION["account_type"] == 100) {
     echo '
    <!-- Nav Item - Dashboard -->
             <li class="nav-item">
@@ -252,9 +251,7 @@ elseif ($_SESSION["account_type"] == 100) {
 //     <span>Consent List</span>
 // </a>
 // </li>
-}
-elseif($_SESSION["account_type"] == 1)
- {
+} elseif ($_SESSION["account_type"] == 1) {
     echo '
                 <li class="nav-item">
                 <a class="nav-link" href="clientProfileList.php" >
@@ -325,9 +322,7 @@ elseif($_SESSION["account_type"] == 1)
         <!-- End of Sidebar -->
 
 ';
-}
-elseif($_SESSION["account_type"] == 2)
- {
+} elseif ($_SESSION["account_type"] == 2) {
     echo '
                 <li class="nav-item">
                 <a class="nav-link" href="clientProfileList.php" >
@@ -395,6 +390,38 @@ elseif($_SESSION["account_type"] == 2)
         <!-- End of Sidebar -->
 
 ';
+} else if ($_SESSION["account_type"] == 200) {
+
+    echo '
+                <li class="nav-item">
+                <a class="nav-link" href="clientProfileList.php" >
+                    <i class="fas fa-address-card"></i>
+                    <span>Patient\'s Profile</span>
+                    </a>
+               
+            </li>
+
+
+     <li class="nav-item">
+    <a class="nav-link" href="prescriptionList.php" >
+        <i class="fas fa-notes-medical"></i>
+        <span>Prescription</span>
+    </a>
+   
+    </li>
+
+      <li class="nav-item">
+    <a class="nav-link" href="dentalcertList.php" >
+        <i class="fas fa-certificate"></i>
+        <span>Dental Certificate</span>
+    </a>
+   
+    </li>
+       
+
+    
+            ';
+
 }
 echo '
             

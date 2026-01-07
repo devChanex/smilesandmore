@@ -56,7 +56,7 @@ error_reporting(0);
                                 onclick="printDiv('bodyResult')" title="Print E-SOA"><i
                                     class="fas fa-print"></i></button>
                         </div>
-                        <div class="card-body" id="bodyResult" style="margin:top:0px;">
+                        <div class="card-body" id="bodyResult" style="margin-top:0px;">
                             <input type="hidden" value="<?php echo $_GET['consentid']; ?>" id="consentId">
                             <input type="hidden" value="<?php echo $_GET['clientid']; ?>" id="clientId">
 
@@ -338,7 +338,7 @@ error_reporting(0);
                                 <div class="copyright text-center my-auto">
 
                                     <a href="javascript:void(0)" class="btn btn-danger btn-icon-split"
-                                        onclick="window.location.href='consentList.php'">
+                                        onclick="window.location.href='clientProfileList.php'">
                                         <span class="icon text-white-50"><i class="fas fa-fw fa-times"></i></span>
                                         <span class="text">Back</span>
                                     </a>
