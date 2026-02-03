@@ -37,7 +37,7 @@ class ServiceClass
         //START GROUPING 
 
         // If both dates are provided
-        $query0 = "SELECT result FROM (SELECT DISTINCT $key AS result FROM clientprofile cp INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid WHERE tsoa.date = :a 
+        $query0 = "SELECT DISTINCT result FROM (SELECT DISTINCT $key AS result FROM clientprofile cp INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid WHERE tsoa.date = :a 
         UNION 
         SELECT DISTINCT $key AS result FROM clientprofile cp INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid INNER JOIN treatmentsubpayment tsp ON tsp.tsubid = tsub.tsubid WHERE (tsoa.date < :a) AND tsp.paymentDate = :a) AS combined_results ORDER BY  result";
 
@@ -56,7 +56,7 @@ class ServiceClass
                 $dateToday = date("Y-m-d");
 
                 // If both dates are provided
-                $query = "SELECT tsoa.soaid, cp.clientid,tsoa.hmoaccredited,tsub.hmo, cp.lname, cp.fname, cp.mdname, tsoa.dentist,tsub.tsubid, tsub.treatment, tsub.price, tsoa.date 
+                $query = "SELECT DISTINCT tsoa.soaid, cp.clientid,tsoa.hmoaccredited,tsub.hmo, cp.lname, cp.fname, cp.mdname, tsoa.dentist,tsub.tsubid, tsub.treatment, tsub.price, tsoa.date 
                       FROM clientprofile cp 
                       INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid 
                       INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid 
@@ -214,7 +214,8 @@ class ServiceClass
                 }
 
                 //PAYMENT SOA NOT TODAY
-                $query12 = "SELECT tsoa.soaid, cp.clientid,tsoa.hmoaccredited,tsub.hmo, cp.lname, cp.fname, cp.mdname, tsoa.dentist,tsub.tsubid, tsub.treatment, tsub.price, tsoa.date ,tsoa.dentist
+                //Insert DISTINCT
+                $query12 = "SELECT DISTINCT tsoa.soaid, cp.clientid,tsoa.hmoaccredited,tsub.hmo, cp.lname, cp.fname, cp.mdname, tsoa.dentist,tsub.tsubid, tsub.treatment, tsub.price, tsoa.date ,tsoa.dentist
                       FROM clientprofile cp INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid INNER JOIN treatmentsubpayment tsp ON tsp.tsubid = tsub.tsubid WHERE (tsoa.date < :a) AND tsp.paymentDate = :a and $key = :c ";
 
                 $stmt12 = $this->conn->prepare($query12);
