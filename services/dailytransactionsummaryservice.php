@@ -214,7 +214,7 @@ class ServiceClass
                 }
 
                 //PAYMENT SOA NOT TODAY
-                //Insert DISTINCT
+                //Insert DISTINCT 02-3-2026
                 $query12 = "SELECT DISTINCT tsoa.soaid, cp.clientid,tsoa.hmoaccredited,tsub.hmo, cp.lname, cp.fname, cp.mdname, tsoa.dentist,tsub.tsubid, tsub.treatment, tsub.price, tsoa.date ,tsoa.dentist
                       FROM clientprofile cp INNER JOIN treatmentsub tsub ON tsub.clientid = cp.clientid INNER JOIN treatmentsoa tsoa ON tsoa.soaid = tsub.soaid INNER JOIN treatmentsubpayment tsp ON tsp.tsubid = tsub.tsubid WHERE (tsoa.date < :a) AND tsp.paymentDate = :a and $key = :c ";
 
