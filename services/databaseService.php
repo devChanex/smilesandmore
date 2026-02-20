@@ -14,7 +14,7 @@ class Database
 
     //prod
 
-    private $host = "216.218.206.42";
+    private $host = "localhost";
     private $db_name = "smilesan_official";
     private $username = "smilesan_admin";
     private $password = 'G[aZ=F,G*~OT';
