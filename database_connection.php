@@ -9,7 +9,7 @@
 
 
 //prod
-$hostname = "216.218.206.42";
+$hostname = "localhost";
 $username = "smilesan_admin";
 $password = 'G[aZ=F,G*~OT';
 $database = 'smilesan_official';
