@@ -7,7 +7,7 @@ $dentist = [
     "Dr. Nikki Sarmiento",
     "Dr. Mike Marcos",
     "Dr. Rae Janica Joyel",
-    "Paulette Malit"
+    "Dr. Paulette Malit"
 ];
 
 ?>
