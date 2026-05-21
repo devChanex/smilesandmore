@@ -6,10 +6,8 @@ $superuser = "nikesarmiento";
 $dentist = [
     "Dr. Nikki Sarmiento",
     "Dr. Mike Marcos",
-    "Dr. Daniel Suarez",
-    "Dr. Meliza Chanelle Yanga",
-    "Dr. Elijah Lia Prado",
-    "Dr. Rae Janica Joyel"
+    "Dr. Rae Janica Joyel",
+    "Paulette Malit"
 ];
 
 ?>
