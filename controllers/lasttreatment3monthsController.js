@@ -61,8 +61,8 @@ function confirmNotifyPatients() {
         }
 
         var subject = 'Reminder: You\'re Due for Your Dental Cleaning';
-        var greetings = fullName || 'there';
-        var msg = 'Hi, ' + greetings + '! !💙 \nWe hope you’re doing well.\n\n' +
+        var greetings = 'Hi ' + ((fullName || 'there')) + '! !💙';
+        var msg = '\nWe hope you’re doing well.\n\n' +
             'It’s been about 6 months since your last dental visit, so we wanted to send you a gentle reminder that you’re due for your dental cleaning (oral prophylaxis) and routine check-up.\n\n' +
             'Keeping up with regular dental visits helps keep your teeth and gums healthy and lets us catch any concerns early before they become bigger problems.\n\n' +
             'Whenever you’re ready, we’d love to see you again! Just reply to this message, and we’ll be happy to help you find an appointment that works for you.\n\n' +
