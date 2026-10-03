@@ -66,7 +66,24 @@ if ($_SESSION["account_type"] == 0) {
         <i class="fas fa-shopping-cart"></i>
         <span>Expenses</span>
     </a>
-   
+   <li class="nav-item">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#payroll" aria-expanded="false"
+        aria-controls="config">
+        <i class="fas fa-file"></i>
+        <span>Payroll</span>
+    </a>
+    <div id="payroll" class="collapse" aria-labelledby="payroll" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+  
+
+<a class="collapse-item" href="dentistPayrollAdjustments.php">Dentist Payroll Adjustment</a>
+<a class="collapse-item" href="dentistPayrollReport.php">Dentist Payroll Report</a>
+          
+ 
+
+        </div>
+    </div>
+</li>
     
             ';
 
@@ -185,7 +202,24 @@ if ($_SESSION["account_type"] == 0) {
         <span>Expenses</span>
     </a>
    
-    
+    <li class="nav-item">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#payroll" aria-expanded="false"
+        aria-controls="config">
+        <i class="fas fa-file"></i>
+        <span>Payroll</span>
+    </a>
+    <div id="payroll" class="collapse" aria-labelledby="payroll" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+  
+
+<a class="collapse-item" href="dentistPayrollAdjustments.php">Dentist Payroll Adjustment</a>
+<a class="collapse-item" href="dentistPayrollReport.php">Dentist Payroll Report</a>
+          
+ 
+
+        </div>
+    </div>
+</li>
             ';
 
 
@@ -286,6 +320,25 @@ if ($_SESSION["account_type"] == 0) {
     </a>
    
     </li>
+
+        <li class="nav-item">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#payroll" aria-expanded="false"
+        aria-controls="config">
+        <i class="fas fa-file"></i>
+        <span>Payroll</span>
+    </a>
+    <div id="payroll" class="collapse" aria-labelledby="payroll" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+  
+
+<a class="collapse-item" href="dentistPayrollAdjustments.php">Dentist Payroll Adjustment</a>
+<a class="collapse-item" href="dentistPayrollReport.php">Dentist Payroll Report</a>
+          
+ 
+
+        </div>
+    </div>
+</li>
             ';
 
     echo '
@@ -423,6 +476,14 @@ if ($_SESSION["account_type"] == 0) {
             ';
 
 }
+echo '
+<li class="nav-item">
+    <a class="nav-link" href="timekeeping.php">
+        <i class="fas fa-clock"></i>
+        <span>Timekeeping</span>
+    </a>
+</li>
+';
 echo '
             
             <!-- Divider -->
