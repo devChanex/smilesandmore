@@ -45,6 +45,36 @@ $(function () {
         formData.append('action', 'timeout');
         sendTimekeepingForm(formData, '#timeOutModal');
     });
+
+    $('#timekeepingRows').on('click', '.delete-timekeeping', function () {
+        var button = $(this);
+        var id = button.data('id');
+        var name = button.data('name');
+        var date = button.data('date');
+        if (!confirm('Delete the timekeeping record for ' + name + ' on ' + date + '?')) {
+            return;
+        }
+
+        button.prop('disabled', true);
+        $.ajax({
+            url: 'services/upsertTimekeepingService.php',
+            type: 'POST',
+            data: { action: 'delete', timekeepid: id },
+            success: function (result) {
+                if (result.trim() === 'success') {
+                    toastSuccess('Timekeeping record deleted.');
+                    loadTimekeeping();
+                } else {
+                    button.prop('disabled', false);
+                    toastError(result);
+                }
+            },
+            error: function (xhr) {
+                button.prop('disabled', false);
+                toastError(xhr.responseText || 'Unable to delete the timekeeping record.');
+            }
+        });
+    });
 });
 
 function saveTimekeepingForm(form) {

@@ -242,7 +242,7 @@ foreach (array_merge($dentistSchedule, $staffSchedule) as $scheduleEntry) {
     <script>
         window.timekeepingSchedules = <?php echo json_encode($scheduleOptions, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT); ?>;
     </script>
-    <script src="controllers/timekeepingController.js"></script>
+    <script src="controllers/timekeepingController-v1.js"></script>
 </body>
 
 </html>

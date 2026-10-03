@@ -24,6 +24,10 @@ class TimekeepingService
 
     public function process($data, $scheduleEntries)
     {
+        if (($data['action'] ?? '') === 'delete') {
+            $this->deleteRecord($data);
+            return;
+        }
         if (($data['action'] ?? '') === 'timeout') {
             $this->recordTimeOut($data, $scheduleEntries);
             return;
@@ -100,6 +104,24 @@ class TimekeepingService
                 ':overtime' => $minutes['overtime'],
                 ':dayType' => $dayType,
             ]);
+        }
+    }
+
+    private function deleteRecord($data)
+    {
+        if (!in_array((int) ($_SESSION['account_type'] ?? -1), [0, 100], true)) {
+            throw new RuntimeException('Only account types 0 and 100 can delete timekeeping records.');
+        }
+
+        $id = trim((string) ($data['timekeepid'] ?? ''));
+        if (!ctype_digit($id) || (int) $id < 1) {
+            throw new InvalidArgumentException('Invalid timekeeping record.');
+        }
+
+        $stmt = $this->conn->prepare('DELETE FROM timekeeping WHERE timekeepid = :id');
+        $stmt->execute([':id' => (int) $id]);
+        if ($stmt->rowCount() === 0) {
+            throw new RuntimeException('Timekeeping record not found.');
         }
     }
 

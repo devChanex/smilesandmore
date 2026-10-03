@@ -74,6 +74,9 @@ class TimekeepingListService
                     . ' data-id="' . $id . '" data-date="' . $date . '" data-name="' . $name . '"'
                     . ' data-timein="' . $timeIn . '" data-timeout="' . $timeOut . '" data-daytype="' . $dayType . '"'
                     . ' title="Edit record" aria-label="Edit record"><i class="fas fa-edit"></i></button>';
+                echo '<button type="button" class="btn btn-danger btn-circle ml-1 delete-timekeeping"'
+                    . ' data-id="' . $id . '" data-name="' . $name . '" data-date="' . $date . '"'
+                    . ' title="Delete record" aria-label="Delete record"><i class="fas fa-trash"></i></button>';
             } elseif ($hasTimeOut) {
                 echo '<span class="text-muted" title="Only account types 0 and 100 can edit a completed record">Locked</span>';
             }
