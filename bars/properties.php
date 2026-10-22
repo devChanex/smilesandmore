@@ -11,15 +11,18 @@ $dentist = [
 ];
 
 $dentistSchedule = [
-    "Dr. Nikki Sarmiento|09:30-17:30",
-    "Dr. Mike Marcos|09:30-17:30",
-    "Dr. Rae Janica Joyel|09:30-17:30",
-    "Dr. Paulette Malit|09:30-17:30"
+    "Dr. Nikki Sarmiento" => ["default" => "09:30-17:30"],
+    "Dr. Mike Marcos" => ["default" => "09:30-17:30"],
+    "Dr. Rae Janica Joyel" => ["default" => "09:30-17:30"],
+    "Dr. Paulette Malit" => ["default" => "09:30-17:30"]
 ];
 
 $staffSchedule = [
-    "Philene Joy Montemayor|10:00-18:00",
-    "Paula Silvano|09:00-17:00",
+    "Philene Joy Montemayor" => [
+        "default" => "10:00-18:00",
+        "Tuesday" => "09:30-17:30"
+    ],
+    "Paula Silvano" => ["default" => "09:00-17:00"]
 ];
 
 $dentistRate = [

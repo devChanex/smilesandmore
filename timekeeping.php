@@ -4,13 +4,7 @@ error_reporting(0);
 date_default_timezone_set("Asia/Manila");
 include_once(__DIR__ . '/bars/properties.php');
 
-$scheduleOptions = [];
-foreach (array_merge($dentistSchedule, $staffSchedule) as $scheduleEntry) {
-    $scheduleParts = explode('|', $scheduleEntry, 2);
-    if (count($scheduleParts) === 2) {
-        $scheduleOptions[$scheduleParts[0]] = $scheduleParts[1];
-    }
-}
+$scheduleOptions = array_merge($dentistSchedule, $staffSchedule);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -242,7 +236,7 @@ foreach (array_merge($dentistSchedule, $staffSchedule) as $scheduleEntry) {
     <script>
         window.timekeepingSchedules = <?php echo json_encode($scheduleOptions, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT); ?>;
     </script>
-    <script src="controllers/timekeepingController-v1.js"></script>
+    <script src="controllers/timekeepingController-v2.js"></script>
 </body>
 
 </html>

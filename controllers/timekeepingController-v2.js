@@ -8,7 +8,7 @@ $(function () {
 
     $('#tableSearch').on('input', loadTimekeeping);
     $('#filterFrom, #filterTo').on('change', loadTimekeeping);
-    $('#recordName, #timeIn, #timeOut').on('input change', updateRenderedPreview);
+    $('#recordDate, #recordName, #timeIn, #timeOut').on('input change', updateRenderedPreview);
 
     $('#timekeepingModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
@@ -144,9 +144,10 @@ function loadTimekeeping() {
 
 function updateRenderedPreview() {
     var person = $('#recordName').val();
+    var date = $('#recordDate').val();
     var timeIn = $('#timeIn').val();
     var timeOut = $('#timeOut').val();
-    var shift = window.timekeepingSchedules[person];
+    var shift = getShiftForDate(window.timekeepingSchedules[person], date);
 
     if (!shift || !timeIn || !timeOut) {
         $('#renderedMinutesInput').val('');
@@ -176,4 +177,22 @@ function updateRenderedPreview() {
 function toMinutes(time) {
     var parts = time.split(':');
     return (Number(parts[0]) * 60) + Number(parts[1]);
+}
+
+function getShiftForDate(personSchedule, date) {
+    if (!personSchedule || !date) {
+        return null;
+    }
+
+    var dateParts = date.split('-');
+    if (dateParts.length !== 3) {
+        return null;
+    }
+    var selectedDate = new Date(
+        Number(dateParts[0]),
+        Number(dateParts[1]) - 1,
+        Number(dateParts[2])
+    );
+    var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return personSchedule[weekdays[selectedDate.getDay()]] || personSchedule.default || null;
 }

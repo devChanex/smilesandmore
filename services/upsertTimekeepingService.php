@@ -55,20 +55,14 @@ class TimekeepingService
         }
         $this->assertUniqueDailyRecord($date, $name, $id);
 
-        $scheduleMap = [];
-        foreach ($scheduleEntries as $entry) {
-            $parts = explode('|', $entry, 2);
-            if (count($parts) === 2) {
-                $scheduleMap[$parts[0]] = $parts[1];
-            }
-        }
-        if (!isset($scheduleMap[$name])) {
+        if (!isset($scheduleEntries[$name]) || !is_array($scheduleEntries[$name])) {
             throw new InvalidArgumentException('The selected person has no configured schedule.');
         }
+        $schedule = $this->getScheduleForDate($scheduleEntries[$name], $date);
 
         $minutes = $timeOut === ''
             ? ['rendered' => 0, 'overtime' => 0]
-            : $this->calculateTimekeepingMinutes($date, $timeIn, $timeOut, $scheduleMap[$name]);
+            : $this->calculateTimekeepingMinutes($date, $timeIn, $timeOut, $schedule);
         if ($id !== '') {
             $stmt = $this->conn->prepare('SELECT timeout FROM timekeeping WHERE timekeepid = :id');
             $stmt->execute([':id' => (int) $id]);
@@ -166,18 +160,12 @@ class TimekeepingService
             throw new RuntimeException('Only account types 0 and 100 can edit a completed record.');
         }
 
-        $scheduleMap = [];
-        foreach ($scheduleEntries as $entry) {
-            $parts = explode('|', $entry, 2);
-            if (count($parts) === 2) {
-                $scheduleMap[$parts[0]] = $parts[1];
-            }
-        }
-        if (!isset($scheduleMap[$record['name']])) {
+        if (!isset($scheduleEntries[$record['name']]) || !is_array($scheduleEntries[$record['name']])) {
             throw new RuntimeException('The selected person has no configured schedule.');
         }
 
-        $minutes = $this->calculateTimekeepingMinutes($record['date'], substr($record['timein'], 0, 5), $timeOut, $scheduleMap[$record['name']]);
+        $schedule = $this->getScheduleForDate($scheduleEntries[$record['name']], $record['date']);
+        $minutes = $this->calculateTimekeepingMinutes($record['date'], substr($record['timein'], 0, 5), $timeOut, $schedule);
         $stmt = $this->conn->prepare('UPDATE timekeeping SET timeout = :timeout, rendered = :rendered, overtime = :overtime WHERE timekeepid = :id');
         $stmt->execute([
             ':timeout' => $timeOut,
@@ -214,6 +202,16 @@ class TimekeepingService
             'rendered' => $renderedMinutes,
             'overtime' => $overtimeMinutes,
         ];
+    }
+
+    private function getScheduleForDate($personSchedule, $date)
+    {
+        $weekday = (new DateTimeImmutable($date))->format('l');
+        $schedule = $personSchedule[$weekday] ?? $personSchedule['default'] ?? null;
+        if (!is_string($schedule)) {
+            throw new RuntimeException('The selected person has no configured shift for ' . $weekday . '.');
+        }
+        return $schedule;
     }
 
     private function isValidDate($date)
