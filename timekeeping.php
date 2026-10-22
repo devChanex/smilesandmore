@@ -60,6 +60,7 @@ $scheduleOptions = array_merge($dentistSchedule, $staffSchedule);
                                             <th>Time In</th>
                                             <th>Time Out</th>
                                             <th>Mins. Rendered</th>
+                                            <th>Late (min)</th>
                                             <th>Overtime</th>
                                             <th>Day Type</th>
                                             <th>Action</th>
@@ -70,6 +71,7 @@ $scheduleOptions = array_merge($dentistSchedule, $staffSchedule);
                                         <tr class="font-weight-bold">
                                             <th colspan="4" class="text-right">Total Minutes Rendered</th>
                                             <th id="totalRenderedMinutes" class="text-right">0 min</th>
+                                            <th id="totalLateMinutes" class="text-right">0 min</th>
                                             <th id="totalOvertimeMinutes" class="text-right">0 min</th>
                                             <th colspan="2"></th>
                                         </tr>

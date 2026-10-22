@@ -111,6 +111,7 @@ function loadTimekeeping() {
     if (fromDate && toDate && fromDate > toDate) {
         $('#timekeepingRows').empty();
         $('#totalRenderedMinutes').text('0 min');
+        $('#totalLateMinutes').text('0 min');
         $('#totalOvertimeMinutes').text('0 min');
         $('#timekeepingMessage').text('Date From must be on or before Date To.');
         return;
@@ -127,12 +128,15 @@ function loadTimekeeping() {
         success: function (result) {
             $('#timekeepingRows').html(result);
             var totalMinutes = 0;
+            var totalLateMinutes = 0;
             var totalOvertimeMinutes = 0;
             $('#timekeepingRows tr').each(function () {
                 totalMinutes += Number(this.dataset.renderedMinutes) || 0;
+                totalLateMinutes += Number(this.dataset.lateMinutes) || 0;
                 totalOvertimeMinutes += Number(this.dataset.overtimeMinutes) || 0;
             });
             $('#totalRenderedMinutes').text(totalMinutes.toLocaleString() + ' min');
+            $('#totalLateMinutes').text(totalLateMinutes.toLocaleString() + ' min');
             $('#totalOvertimeMinutes').text(totalOvertimeMinutes.toLocaleString() + ' min');
             $('#timekeepingMessage').text($('#timekeepingRows').children().length ? '' : 'No timekeeping records found.');
         },
