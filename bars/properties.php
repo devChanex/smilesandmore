@@ -6,15 +6,13 @@ $superuser = "nikesarmiento";
 $dentist = [
     "Dr. Nikki Sarmiento",
     "Dr. Mike Marcos",
-    "Dr. Rae Janica Joyel",
-    "Dr. Paulette Malit"
+    "Dr. Rae Janica Joyel"
 ];
 
 $dentistSchedule = [
     "Dr. Nikki Sarmiento" => ["default" => "09:30-17:30"],
     "Dr. Mike Marcos" => ["default" => "09:30-17:30"],
-    "Dr. Rae Janica Joyel" => ["default" => "09:30-17:30"],
-    "Dr. Paulette Malit" => ["default" => "09:30-17:30"]
+    "Dr. Rae Janica Joyel" => ["default" => "09:30-17:30"]
 ];
 
 $staffSchedule = [
@@ -28,8 +26,7 @@ $staffSchedule = [
 $dentistRate = [
     "Dr. Nikki Sarmiento|3.333",
     "Dr. Mike Marcos|1.67",
-    "Dr. Rae Janica Joyel|1.67",
-    "Dr. Paulette Malit|1.67"
+    "Dr. Rae Janica Joyel|1.67"
 ];
 
 ?>
