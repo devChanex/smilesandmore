@@ -24,7 +24,7 @@ $staffSchedule = [
         "default" => "10:00-18:00",
         "Tuesday" => "09:30-17:30"
     ],
-    "Paula Silvano" => ["default" => "09:00-17:00"]
+    "Paula Silvano" => ["default" => "09:30-17:30"]
 ];
 
 $dentistRate = [
